@@ -56,93 +56,93 @@
 <p />
 <div class="main">
 <a name="text"></a><h3><a name="Extra_Credit_Lab_2_HTML_and_CSS"></a><a name="Extra_Credit_Lab_2_HTML_and_CSS_"></a> Extra Credit Lab 2: HTML and CSS on your own webserver... </h3>
-<p />
+<p>
+In the last exercise, we worked with HTML to make a simple web page. HTML (or <i>Hyper-Text Markup Language</i>) is only part of the source code for most web pages. It controls the content that goes on the page. When CSS (<i>Cascading Style Sheets</i>) is used, we can control how that content is displayed; it is pure styling. You can completely change the appearance of a web page by just changing the CSS, without manipulating the HTML at all. Here are two thorough references for these technologies -- they may be a bit <i>too</i> thorough for our intents and purposes, but they're still good to have around: </p><ul>
+<li> HTML: <a href="http://w3schools.com/html/default.asp" target="_top">http://w3schools.com/html/default.asp</a> <br>
+</li> <li> CSS: <a href="http://w3schools.com/css/default.asp" target="_top">http://w3schools.com/css/default.asp</a>, <a href="http://www.csszengarden.com/" target="_top">http://www.csszengarden.com/</a> <br>
+</li></ul> 
+<p>
+</p>
+
+<p>
 For this problem we'd like to give you a chance to practice your HTML and CSS skills while also telling us a little more about yourselves. You should prepare a personal page with a photo of you (or of something you love) and with information like your name, your hometown, your favorite things (food, color, sport, etc...), and anything else that you think is interesting (or that you just feel like telling us!). 
-<p />
-To start, download <a href="https://www.cs.hmc.edu/twiki/pub/CS5/CreatingHTMLAndCSS/htdocs.zip" >this zip file named htdocs.zip</a>. Then <ul>
+</p><p>
+To start, download <a href="https://www.cs.hmc.edu/twiki/pub/CS5/CreatingHTMLAndCSS/htdocs.zip">this zip file named htdocs.zip</a>. Then </p><ul>
 <li> Unzip those files
 </li> <li> Copy all of the files (but not the folder) to your <tt>web</tt> directory
 </li></ul> 
-<p />
+<p>
 <br>
-<p />
-Then open the CGI server using the <tt>python -m CGIHTTPServer</tt> command as we did in <a href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab1" >Extra Credit Lab 1</a>.  This time you will want to go to the following address in your browser window:
-<p />
+</p><p>
+Then open the CGI server using the <tt>python -m CGIHTTPServer</tt> command as we did in <a href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab1">Extra Credit Lab 1</a>. Let's first take a look at <tt>index2.html</tt>. To view it, go to the following address in your browser window:
+</p><p>
 <a href="http://localhost:8000/index2.html" target="_top">http://localhost:8000/index2.html</a>
-<p />
-and you should see the second of the two screenshots at the bottom of this page.
-<p />
-Using a text editor (IDLE will work just fine), change the line of the <tt>index2.html</tt> file that reads 
-<pre>
-&#60;link rel&#61;&#34;stylesheet&#34; type&#61;&#34;text/css&#34; href&#61;&#34;style2.css&#34; /&#62;
+</p><p>
+You should see the second of the two screenshots at the bottom of this page.
+</p><p>
+Using a text editor (Sublime will work just fine), change the line of the <tt>index2.html</tt> file that reads 
+</p><pre>&lt;link rel="stylesheet" type="text/css" href="style2.css" /&gt;
 </pre>
-<p />
+<p>
 to a line that reads
-<pre>
-&#60;link rel&#61;&#34;stylesheet&#34; type&#61;&#34;text/css&#34; href&#61;&#34;style1.css&#34; /&#62;
+</p><pre>&lt;link rel="stylesheet" type="text/css" href="style1.css" /&gt;
 </pre>
-<p />
+<p>
 and reload the page to see the <i>other</i> version: the same content, but with a different style sheet.
-<p />
+</p><p>
 <br>
-<p />
-Recall that HTML stands for <i>Hyper-Text Markup Language</i> and CSS is <i>Cascading Style Sheets</i>. Here are two thorough references for these technologies -- they may be a bit <i>too</i> thorough for our intents and purposes, but they're still good to have around: <ul>
-<li> HTML: <a href="http://w3schools.com/html/default.asp" target="_top">http://w3schools.com/html/default.asp</a> <br />
-</li> <li> CSS: <a href="http://w3schools.com/css/default.asp" target="_top">http://w3schools.com/css/default.asp</a>, <a href="http://www.csszengarden.com/" target="_top">http://www.csszengarden.com/</a> <br />
-</li></ul> 
-<p />
-In addition, you should create <b><i>two different</i></b> CSS files, so that the same page can be displayed with different formatting...
-<p />
-<p />
-<p />
-<h5><a name="What_to_do"></a> What to do </h5>
-<p />
-Alter the provided <tt>index.html</tt> or <tt>index2.html</tt> webpage to create your own webpage using HTML and CSS. Also change at least one of the two CSS files (<tt>style1.css</tt> or <tt>style2.css</tt>). You should be sure to change each of these things <i>somewhere</i> in your HTML and CSS. Each one is worth 10 points: <ul>
+</p><p>
+</p><h5><a name="What_to_do"></a> What to do </h5>
+<p>
+Alter the provided <tt>index.html</tt> or <tt>index2.html</tt> webpage to create your own webpage using HTML and CSS. Also change at least one of the two CSS files (<tt>style1.css</tt> or <tt>style2.css</tt>). You should be sure to change each of these things <i>somewhere</i> in your HTML and CSS. Each one is worth 10 points: </p><ul>
 <li> The color of your text. <a href="http://www.w3schools.com/html/html_colors.asp">This link explains HTML colors -- try the rgb variety (I find that easier.)</a><br>
-</li> <li> The color of your links. (Use the same reference as above, but see <a href="http://www.w3schools.com/css/css_link.asp">this link</a> to explain changing links in CSS.<br>
-</li> <li> Change the image(s) you display: choose your own, download it, copy it to your web directory, and use it!  As we did in <a href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab1" >Extra Credit Lab 1</a>. <br>
+</li> <li> The color of your links. (Use the same reference as above, but see <a href="http://www.w3schools.com/css/css_link.asp">this link</a> to explain changing links in CSS.)<br>
+</li> <li> The image(s) you display: choose your own, download it, copy it to your web directory, and use it!  (See <a href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab1">Extra Credit Lab 1</a> if you need a reminder.) <br>
 </li> <li> The color or content of your background. <a href="http://www.w3schools.com/css/css_background.asp">This link explains CSS backgrounds -- try using an image!</a> <br>
 </li> <li> Finally, experiment with at least one HTML or CSS feature of your choice. For example, although it's not considered stylish, you might use <marquee>Marquee text!</marquee>
 </li></ul> 
-<p />
-<p />
+<p>
+</p><p>
 <br>
-<p />
-Finally, load into your browser your personal page with <i>each</i> of those two style sheets: the one you changed and the one you (perhaps) did not change.
-<p />
-For your page and each of the two stylesheets, <i><b>take a screenshot</b></i> and name your screenshots <ul>
-<li> <tt>hw2pr1im1.png</tt>
-</li> <li> <tt>hw2pr1im2.png</tt>
+</p><p>
+Finally, load into your browser your personal page with <i>each</i> of those two style sheets: the one you changed and the one you (perhaps) did not change. 
+</p><p>
+For your page and each of the two stylesheets, <i><b>take a screenshot</b></i> and name your screenshots </p><ul>
+<li> <tt>hw2pr1img1.png</tt>
+</li> <li> <tt>hw2pr1img2.png</tt>
 </li></ul> 
 If you can make sure they're <tt>.png</tt> (Portable Network Graphics) files, great! But if they're another kind of image file, that's OK, too.
-<p />
+<p>
 <br>
-<p />
-<hr />
-<p />
+</p><p>
+</p><hr>
+<p>
 <!--
 <p />
 For this assignment you should write one HTML file and at least two different CSS files. Remember that the point of using HTML and CSS together is that HTML handles only content and CSS handles only styling, so that you can completely change the appearance of a web page without manipulating the HTML at all. Try to create two very different looking webpages from your two different style sheets.
 <p />
+<p>
+In addition, you should create <b><i>two different</i></b> CSS files, so that the same page can be displayed with different formatting...
+</p>
 -->
-<p />
-<h5><a name="Submission"></a> Submission </h5>
-<p />
+</p><p>
+</p><h5><a name="Submission"></a> Submission </h5>
+<p>
 For this assignment, you should not submit your HTML or CSS files, just the two <i>images</i>, which are your screenshots. 
-<p />
+</p><p>
 Next week we will make sure that you have a chance to make your pages publicly available, but, of course,  only if you want to!
-<p />
-<h5><a name="Screenshots_of_my_example_page_u"></a> Screenshots of my example page using two different style sheets... </h5>
-<p />
+</p><p>
+</p><h5><a name="Screenshots_of_my_example_page_u"></a> Screenshots of my example page using two different style sheets... </h5>
+<p>
 <!--
 <img src="http://www.cs.hmc.edu/~paelionmoss/personal.png" alt="personal.png" />
---> <ul>
-<li> first stylesheet <tt>style1.css</tt> <br>     <img src="https://www.cs.hmc.edu/twiki/pub/CS5/CreatingHTMLAndCSS/zdodds1.png" alt="zdodds1.png" width='50%' />
+--> </p><ul>
+<li> first stylesheet <tt>style1.css</tt> <br>     <img src="./CS5 - WebExCr2011Lab2_files/zdodds1.png" alt="zdodds1.png" width="50%">
 </li></ul> 
-<p />
+<p>
 <br><br>
-<p /> <ul>
-<li> second stylesheet <tt>style2.css</tt><br>     <img src="https://www.cs.hmc.edu/twiki/pub/CS5/CreatingHTMLAndCSS/zdodds2.png" width='50%'  />
+</p><p> </p><ul>
+<li> second stylesheet <tt>style2.css</tt><br>     <img src="./CS5 - WebExCr2011Lab2_files/zdodds2.png" width="50%">
 </li></ul> 
 <p />
 <p />
