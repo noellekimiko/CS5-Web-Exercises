@@ -57,12 +57,17 @@
 <div class="main">
 <a name="text"></a><h2><a name="Web_Extra_Credit_Lab_1_HTML"></a><a name="Web_Extra_Credit_Lab_1_HTML_"></a> Web Extra Credit Lab 1 (HTML) </h2>
 <h3><a name="Running_a_Simple_CGI_Web_Server"></a> Running a Simple CGI Web Server </h3>
-To view your webpage use the command-line to run a CGI server.  This server can be used to host your webpage locally.  
-<p />
-First you will need to create a directory (folder) on your desktop called <tt>web</tt>, and create another directory inside Web called <tt>cgi-bin</tt>.  cgi-bin is where you will need to save your webpage.  To test the server you can copy the following test code into a new python file named <tt>hello.py</tt> and save it in cgi-bin. 
-<p />
-<pre>
-#!/usr/local/bin/python
+
+Before making our webpage, we will set up a CGI server from the command-line. This server can be used to host your webpage locally so it is easier to view and update.
+
+In case you are not familiar with command-line prompts:
+<a href="http://mally.stanford.edu/~sr/computing/basic-unix.html" target="_top">http://mally.stanford.edu/~sr/computing/basic-unix.html</a>
+</p><p>
+
+<p>
+First create a directory (folder) on the desktop called <tt>web</tt>. Inside <tt>web</tt>, create another directory called <tt>cgi-bin</tt>.  The <tt>web</tt> directory is where you will to save your webpage later in this lab.  Now, inside of <tt>cgi-bin</tt> make a new python file named <tt>hello.py</tt>. Copy and paste the following content into this file, and then save it:  
+</p><p>
+</p><pre>#!/usr/local/bin/python
 
 print &#39;Content-Type: text/html&#39;
 print
@@ -72,182 +77,238 @@ print &#39;&#60;body&#62;&#39;
 print &#39;&#60;h2&#62;Hello from Python&#60;/h2&#62;&#39;
 print &#39;&#60;/body&#62;&#60;/html&#62;&#39;
 </pre>
-<p />
-In case you are not familiar with command-prompt...
-<a href="http://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html" target="_top">http://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html</a>
-<p />
-<p />
-Then open up the command-line prompt (Terminal on a mac). Navigate to your web folder by typing <tt>cd Desktop</tt>, then typing <tt>cd web</tt>. After that, paste in the following to open up python.
-<p />
-<p />
+<p>
+</p>
+
+<p>
+This file will help you to see if your files are running on the server. In order to view it in a browser, there are certain permissions that have to be set. Open up the command-line prompt (or Terminal on a mac) and navigate to the <tt>cgi-web</tt> folder by running: <br>
 <pre>
-python -m CGIHTTPServer
+cd Desktop/web/cgi-web
+</pre>
+</p>
+<p>
+</p>
+
+<p>
+Then set the permissions to make this file world accessible with the <tt>chmod</tt> command:
+</p><p>
+</p><pre>
+chmod 755 hello.py
+</pre>
+<p>
+</p>
+
+<p>
+Navigate back up to the <tt>Desktop/web</tt> folder:
+</p><p>
+</p><pre>cd ..
+</pre>
+<p>
+</p>
+
+<p>
+Paste in the following to open up python.
+</p>
+<pre>python -m CGIHTTPServer
 </pre>
 You should then see the following message.
-<pre>
-C:\classes\python&#62;python -m CGIHTTPServer
+<pre>C:\classes\python&gt;python -m CGIHTTPServer
 Serving HTTP on 0.0.0.0 port 8000 ...
 </pre>
-<p />
+<p>
 The server is now running your page! To view it, open <a href="http://localhost:8000/cgi-bin/hello.py">http://localhost:8000/cgi-bin/hello.py</a> in your browser.
-<p />
+</p><p>
 <br>
-<p />
-<b><font color="darkred">Troubleshooting...</font></b>:
-<p />
-<br>
-<p />
-<b>If nothing at all appears...</b> &nbsp; look back at the terminal window where you started the web server -- there, you may see an error like <tt>OSError: [Errno 13] Permission denied</tt>. If you do, it's because the <tt>hello.py</tt> file does not have the permissions necessary to run <i>as an executable file</i>. To fix this, run<br>
-<pre><code>
-chmod 755 hello.py
-</code></pre>
-from within the <tt>cgi-bin</tt> directory.
-<p />
-<br>
-<p />
+</p>
+
+<b><font color="darkred">Troubleshooting...</font></b>
+
+<p></p>
+<p>
 <b>Getting an Error Message</b> when starting up your server? If you run into problems hosting your website, the problem might be in the first line of <tt>hello.py</tt>. Check where your version of Python is saved, and change the file path as necessary.
 If the command gives you a message like:
-<pre>
-&#39;python&#39; is not recognized as an internal or external command,
+</p><pre>'python' is not recognized as an internal or external command,
 operable program or batch file.
 </pre>
 or:
-<pre>
-Bad command or filename
+<pre>Bad command or filename
 </pre>
-<p />
-...Then you probably need to set your computer to know where the Python interpreter is. Read this <a href="/twiki/bin/view/CS5/PythonPath" class="twikiLink">PythonPath</a> page to learn how.
-<p />
+<p>
+...Then you probably need to set your computer to know where the Python interpreter is. Read this <a class="twikiLink" href="https://www.cs.hmc.edu/twiki/bin/view/CS5/PythonPath">PythonPath</a> page to learn how.
+</p><p>
 <br>
 <br>
-<p />
+</p><p>
 Otherwise, the following type of messages should appear in your command line window if things are going well:
-<pre>
-localhost - - &#91;29/Jan/2008 20:13:54] &#34;GET /hello.py HTTP/1.1&#34; 404 -
-localhost - - &#91;29/Jan/2008 20:14:17] &#34;GET /cgi-bin/hello.py HTTP/1.1&#34; 200 -
-localhost - - &#91;29/Jan/2008 20:14:17] command: C:\Python25\python.exe -u C:\class
-es\python\cgi-bin\hello.py &#34;&#34;
-localhost - - &#91;29/Jan/2008 20:14:17] CGI script exited OK
+</p><pre>
+localhost - - [29/Jan/2008 20:14:17] "GET /cgi-bin/hello.py HTTP/1.1" 200 -
+localhost - - [29/Jan/2008 20:14:17] command: C:\Python25\python.exe -u C:\class
+es\python\cgi-bin\hello.py ""
+localhost - - [29/Jan/2008 20:14:17] CGI script exited OK
 </pre>
-<p />
+<p>
 If at any time you need to exit the server, type <tt> Control-C</tt>.
-<p />
-<h3><a name="Creating_an_HTML_document"></a> Creating an HTML document </h3>
-<p />
-While keeping your server open, create a new html document, <tt>problem1.html</tt> in your <code>web</code> folder using IDLE (simply open a new window in IDLE, and when you save, make sure your file name ends in ".html"). Put any test code you like into problem1.html and change the address in your browser to <a href="http://localhost:8000/problem1.html">http://localhost:8000/problem1.html</a>. 
-<p />
-<h3><a name="Body_and_Headers_in_HTML"></a> Body and Headers in HTML </h3>
-<p />
-HTML uses tags to describe the information on a webpage. Note that <tt><html></tt> and <tt><body></tt> tags are required for every html page. Tags with a forward slash are used to close open tags- if you forget a closing tag, your page will not turn out the way you want it!
-<p />
-Header tags, such as <tt> h1 </tt>, <tt> h2 </tt>, and paragraph tags <tt> p </tt>, distinguish text on the page. 
-<p />
-You can copy and paste this code into your problem1.html file to see how these tags work.
-<p />
-<pre> 
-&#60;html&#62;
-&#60;body&#62;
+</p><p>
+</p><h3><a name="Creating_an_HTML_document"></a> Creating an HTML document </h3>
+<p>
+While keeping your server open, create the <tt>html</tt> document for your webpage. To do this, open a new document in Sublime, and then save it as <tt>problem1.html</tt> in your <code>web</code> folder. Note that this is a different location from where the <tt>hello.py</tt> file is saved.
+</p>
+<p>
+This new file has to be world accessible and so we use the <tt>chmod</tt> command from inside the <tt>web</tt> folder:
+</p><p>
+</p><pre>
+cd ~/Desktop/web/
+chmod 755 problem1.html
+</pre>
+<p>
+</p>
 
-&#60;h1&#62;My First Heading&#60;/h1&#62;
+<p>
+To view it, you will use the following address in your browser: <a href="http://localhost:8000/problem1.html">http://localhost:8000/problem1.html</a>. Right now, there is no content at that page, but you will add content in the upcoming steps.
 
-&#60;p&#62;My first paragraph.&#60;/p&#62;
+</p><p>
+</p><h3><a name="Body_and_Headers_in_HTML"></a> Body and Headers in HTML </h3>
+<p>
+HTML uses tags to describe the information on a webpage. Note that <tt>opening</tt> and <tt>closing</tt> tags are required for every html page. Tags with a forward slash are used to close open tags- if you forget a closing tag, your page will not turn out the way you want it!
+</p><p>
+Header tags, such as <tt>h1</tt>, <tt>h2</tt>, and paragraph tags <tt>p</tt>, distinguish text on the page. 
+</p><p>
+You can copy and paste this code into your <tt>problem1.html</tt> file to see how these tags work.
+</p><p>
+</p><pre> 
+&lt;html&gt;
+&lt;body&gt;
 
-&#60;/body&#62;
-&#60;/html&#62; </pre>
-<p />
+&lt;h1&gt;My First Heading&lt;/h1&gt;
+
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt; </pre>
+<p>
 There are also tags for basic text formatting:
-<p />
-<pre>
-&#60;p&#62;&#60;b&#62;This text is bold&#60;/b&#62;&#60;/p&#62;
-&#60;p&#62;&#60;strong&#62;This text is strong&#60;/strong&#62;&#60;/p&#62;
-&#60;p&#62;&#60;big&#62;This text is big&#60;/big&#62;&#60;/p&#62;
-&#60;p&#62;&#60;i&#62;This text is italic&#60;/i&#62;&#60;/p&#62;
-&#60;p&#62;&#60;em&#62;This text is emphasized&#60;/em&#62;&#60;/p&#62;
-&#60;p&#62;&#60;code&#62;This is computer output&#60;/code&#62;&#60;/p&#62;
-&#60;p&#62;This is&#60;sub&#62; subscript&#60;/sub&#62; and &#60;sup&#62;superscript&#60;/sup&#62;&#60;/p&#62;
+</p><p>
+</p><pre>&lt;p&gt;&lt;b&gt;This text is bold&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This text is strong&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;big&gt;This text is big&lt;/big&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;This text is italic&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This text is emphasized&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;This is computer output&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This is&lt;sub&gt; subscript&lt;/sub&gt; and &lt;sup&gt;superscript&lt;/sup&gt;&lt;/p&gt;
 </pre>
-<p />
-Feel free to try these out in your file!
-<p />
-<h3><a name="Lists_and_Tables"></a> Lists and Tables </h3>
-<p />
+<p>
+Feel free to try these out in your file! Make sure to put this code inside of the <tt>body</tt> section of the page.
+
+</p><p>
+</p><h3><a name="Lists"></a> Lists </h3>
+<p>
 There are two types of lists in HTML, ordered lists and unordered lists. Ordered lists number the items, while unordered lists use bullet points.
-<p />
+</p><p>
 Unordered lists start with a <tt>ul</tt> tag, and ordered lists start with a <tt>ol</tt> tag.
-<p />
+</p><p>
 Individual items in the list are denoted by the <tt>li</tt> tag, which stands for 'list item'.
-<p />
+</p><p>
 Here is an example of an unordered list:
-<pre>
-&#60;ul&#62;
-&#60;li&#62;aliens&#60;/li&#62;
-&#60;li&#62;spam&#60;/li&#62;
-&#60;/ul&#62;
+</p><pre>&lt;ul&gt;
+&lt;li&gt;aliens&lt;/li&gt;
+&lt;li&gt;spam&lt;/li&gt;
+&lt;/ul&gt;
 </pre>
-<p />
+
+<p> which will end up looking like: </p>
+<ul>
+<li>aliens</li>
+<li>spam</li>
+</ul>
+
+<p>
 Here is an example of an ordered list:
-<pre>
-&#60;ol&#62;
-&#60;li&#62;aliens&#60;/li&#62;
-&#60;li&#62;spam&#60;/li&#62;
-&#60;/ol&#62;
+</p><pre>&lt;ol&gt;
+&lt;li&gt;aliens&lt;/li&gt;
+&lt;li&gt;spam&lt;/li&gt;
+&lt;/ol&gt;
 </pre>
-<p />
-Tables are denoted by the <tt>table</tt> tag. To add rows to your table, add in a <tt>tr</tt> table row tag, and add columns by entering table data by adding <tt>td</tt> tags <b>within</b> your row tags. Again, feel free to play around with your own table.
-<p />
-<pre>
-&#60;table&#62;
-&#60;table border&#61;&#34;1&#34;&#62;
-&#60;tr&#62;
-&#60;td&#62;row 1, cell 1&#60;/td&#62;
-&#60;td&#62;row 1, cell 2&#60;/td&#62;
-&#60;/tr&#62;
-&#60;tr&#62;
-&#60;td&#62;row 2, cell 1&#60;/td&#62;
-&#60;td&#62;row 2, cell 2&#60;/td&#62;
-&#60;/tr&#62;
-&#60;/table&#62;
+<p> which will be: </p>
+<ol>
+<li>aliens</li>
+<li>spam</li>
+</ol>
+
+<p> Include a list of either type inside your <tt>problem1.html</tt> file. </p>
+
+</p><p>
+</p><h3><a name="Tables"></a> Tables </h3>
+
+<p>
+Tables are denoted by the <tt>table</tt> tag. The <tt>tr</tt> tag means "table row" and within rows are any number of <tt>td</tt> (table data) tags that will be the columns.
+</p><p>
+</p><pre>&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;row 1, cell 1&lt;/td&gt;
+&lt;td&gt;row 1, cell 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;row 2, cell 1&lt;/td&gt;
+&lt;td&gt;row 2, cell 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
 </pre>
-<p />
-<h3><a name="Links"></a> Links </h3>
-<p />
-The html code for link is fairly straightforward:
-<p />
-<pre>
-&#60;a href&#61;&#34;url&#34;&#62;Link text&#60;/a&#62;
+
+<table>
+<tr>
+<td>row 1, cell 1</td>
+<td>row 1, cell 2</td>
+</tr>
+<tr>
+<td>row 2, cell 1</td>
+<td>row 2, cell 2</td>
+</tr>
+</table>
+
+<p> Add a table to your <tt>problem1.html</tt> file as well. </p>
+
+<p>
+</p><h3><a name="Links"></a> Links </h3>
+<p>
+The html code for creating a hyperlink is fairly straightforward:
+</p><p>
+</p><pre>&lt;a href="url"&gt;Link text&lt;/a&gt;
 </pre>
-<p />
-The <tt>href</tt> specifies the destination of the link, and the <tt>a</tt> tag stands for 'anchor'.
-<p />
+<p>
+The <tt>a</tt> tag stands for 'anchor' and the string specified with the <tt>href</tt> attribute determines the destination of the link.
+</p><p>
 To change the code above, replace the <i>url</i> and <i>Link text</i> with your desired values.
-<p />
-<h3><a name="Images"></a> Images </h3>
-<p />
-The html tag for images is <tt>img</tt>. Since image tags have no closing tag (you put the descriptors in the tag itself) it is called an empty tag.
-<p />
-<pre>
-&#60;img src&#61;&#34;url&#34; alt&#61;&#34;some&#95;text&#34;/&#62;
+</p><p>
+</p><h3><a name="Images"></a> Images </h3>
+<p>
+The html tag for images is <tt>img</tt>. These tags are a special type called "self-closing" tags which means they do not have the typical structure of an opening and closing tag. Instead, all of the information for the image is specified using attributes inside the tag, and then closed with the ending <tt>/&gt;</tt>. There are many possible attributes to use, but the two that are required are <tt>src</tt> and <tt>alt</tt>.
+</p><p>
+</p><pre>&lt;img src="url" alt="some_text"/&gt;
 </pre>
-<p />
+<p>
 <tt>src</tt> stands for source, the place where you are pulling the image from. The <tt>alt</tt> tag is short for alternative text, which is displayed if something goes wrong with the image.
-<p />
+</p><p>
 If you want to scale your image, then you can also add additional <tt>height</tt> <tt>width</tt> attributes, which specify in pixels how high/wide an image is.
-<p />
-<pre>
-&#60;img src&#61;&#34;../alien.jpg&#34; alt&#61;&#34;alien&#34; width&#61;&#34;150&#34; height&#61;&#34;150&#34; /&#62;
+</p><p>
+</p><pre>&lt;img src="../alien.jpg" alt="alien" width="150" height="150" /&gt;
 </pre>
-<p />
-<b>Getting a 404 (Not Found) Error?</b> Then you haven't saved your source image in the right place, or you do not have the right path for the image! The best place to save your image is in the Web folder, adjacent to the cgi-bin folder. In your html, you can then call the image with <tt>../imagename.extension</tt>.
-If you are calling your image from a website, be sure the link begins with "http://www."
-<p />
-If you want to play around with more HTML features feel free to check out <a href="http://www.w3schools.com/html/default.asp" >w3schools.com</a>.
-<p />
-When you are done playing around with features submit your <tt>problem1.html</tt> file to the <a href="http://www.cs.hmc.edu/~submissions/submissions/home.py" >cs submission site</a>.<a name="bottom"></a>
-</div>
-<p />
-<div class="footer">
-<p />
-</div>
-<p />
-</body>
-</html>
+
+<b><font color="darkred">Troubleshooting...</font></b>
+
+<p></p>
+
+<p>
+<b>Getting a 404 (Not Found) Error?</b> Then you haven't saved your source image in the right place, or you do not have the right path for the image! The best place to save your image is in the <tt>web</tt> folder, the same place as your <tt>problem1.html</tt> webpage. In your webpage, you can use <tt>./imagename.extension</tt> to reference the image.
+If you are using an online image, be sure the link begins with "http://www."
+</p><p>
+If you want to play around with more HTML features feel free to check out the reference guide: <a href="http://www.w3schools.com/html/default.asp">w3schools.com</a>.
+</p><p>
+When you are done playing around with features submit your <tt>problem1.html</tt> file to the <a href="http://cicero.cs.hmc.edu/" target="_blank">cs submission site</a>.<a name="bottom"></a>
+</p></div>
+<p>
+</p><div class="footer">
+<p>
+</p></div>
+<p>
+
+</p></body></html>
