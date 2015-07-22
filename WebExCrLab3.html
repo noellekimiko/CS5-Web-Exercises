@@ -94,7 +94,7 @@ chmod ugo+rx test.py
 <p />
 On windows, our tests didn't seem to require any changing of permissions... .
 <p />
-Once that's done, you should be able to run this test Python script by going to the appropriate URL:
+Once that's done, you should be able to run this test Python script by starting your server and going to the appropriate URL:
 <p />
 <a href="http://localhost:8000/cgi-bin/test.py" target="_top">http://localhost:8000/cgi-bin/test.py</a>
 <p />
@@ -189,7 +189,7 @@ When you run this new script, it will print (in its webpage) <b><font size="+1" 
 <p />
 However, if you pass an input <i>within the URL</i> of this new page, it will receive and use that input. Try it by entering the URL:
 <p />
-<a href="http://localhost:8000/cgi-bin/test.py?name=Spam%20McSpamSpam" target="_top">http://localhost:8000/cgi-bin/test.py?name=Spam%20McSpamSpam</a>.
+<a href="http://localhost:8000/cgi-bin/test.py?name=Spam%20McSpamSpam" target="_blank">http://localhost:8000/cgi-bin/test.py?name=Spam%20McSpamSpam</a>.
 <p />
 <p />
 The <tt>%20</tt> is a URL-safe method of inputting a space character, as you'll see when you load the page!
@@ -197,7 +197,7 @@ The <tt>%20</tt> is a URL-safe method of inputting a space character, as you'll 
 <br>
 <p />
 <p />
-<h2><a name="Calling_the_form_from_an_HTML_pa"></a> Calling the form from an HTML page </h2>
+<h2><a name="Calling_the_script_from_an_HTML_p"></a> Calling the script from an HTML page </h2>
 <p />
 You can create an HTML web form that will call the <tt>test.py</tt> script with whatever name you input.
 <p />
@@ -266,15 +266,15 @@ Name: &#60;input type&#61;&#34;text&#34; name&#61;&#34;name&#34;&#62;
 &#34;&#34;&#34;
 </pre>
 <p />
-Set its permissions with <tt>chmod 755 input.py</tt>.
+Set its permissions with <tt>chmod 755 input.py</tt> from within the <tt>web</tt> directory.
 <p />
-Then, load the file at the URL <a href=""></a>, type your name, and -- it should again run <tt>test.py</tt> to result in the same welcome message.
+Then, load the file at the URL <a href="http://localhost:8000/cgi-bin/input.py">http://localhost:8000/cgi-bin/input.py</a>, type your name, and it should again run <tt>test.py</tt> to result in the same welcome message.
 <p />
 <br>
 <p />
 <h2><a name="Problem_1_A_Customized_Welcome_P"></a> Problem 1: A Customized Welcome Page... </h2>
 <p />
-Finally, alter the <tt>test.py</tt> above so that it offers at least two custom messages, depending on the value of the input parameter, <tt>name</tt>. You might offer a custom message for your name, but a generic message for others' names...
+Alter the <tt>test.py</tt> above so that it offers at least two custom messages, depending on the value of the input parameter, <tt>name</tt>. You might offer a custom message for your name, but a generic message for others' names...
 <p />
 <br><br>
 <p />
@@ -722,13 +722,15 @@ Now, make sure you've set up your localhost by going to command prompt, changing
 <p />
 ...And you've done it! Your very own html/cgi Rock-Paper-Scissors game. Great job! <img src="https://www.cs.hmc.edu/twiki/pub/TWiki/SmiliesPlugin/biggrin.gif" alt="big grin" title="big grin" border="0" />
 -->
+<!-- 
 <p />
 <h3><a name="Appendix_three_files_that_will_h"></a> Appendix: three files that will help implement rock-paper-scissors </h3>
 <p />
 Here are three files that will help implement the RPS game: <ul>
 <li> the <tt>rockpaperscissors.py</tt> file is the place to start
 </li> <li> the <tt></tt>
-</li></ul> 
+</li></ul>
+-->
 <p /><a name="bottom"></a>
 </div>
 <p />
