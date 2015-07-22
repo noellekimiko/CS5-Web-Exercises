@@ -1,0 +1,221 @@
+<html>
+<p />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+  <base href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab5"> 
+
+  <title>CS5 - WebExCr2011Lab5</title>
+
+
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <style type="text/css">
+  .header {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  //.sidebar {
+  //  background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  //}
+  .subheader {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  .footer {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  </style>
+</head>
+<p />
+<body class="composite">
+<p />
+<a name="top"></a>
+<p />
+<div class="header">
+  <img class="logo" src="http://www.cs.hmc.edu/~cs5grad/cs5/images/cs5_logo.png">
+</div>
+<p />
+<p />
+<div class="subheader">
+  <a class="twikiLink" href="/twiki/bin/view/CS5/WebHome">CS5 Web</a> &gt; <a class="twikiLink" href="/twiki/bin/view/CS5/WebCS5DevelopmentPage">WebCS5DevelopmentPage</a> &gt;
+  <a href="/twiki/bin/view/CS5/WebExCr2011Lab5" class="twikiLink">WebExCr2011Lab5</a>
+  <div style="margin-bottom: 6px;">
+	 <b>Next HW</b>: &nbsp;&nbsp; <b><a href="/twiki/bin/view/CS5/ProjectsPage" class="twikiLink">Final projects</a></b> <!--and <a href="/twiki/bin/view/CS5/Homework8Gold" class="twikiLink">HW 8</a></b>--> <!-- <b><a class="twikiLink" href="/twiki/bin/view/CS5/Homework12Gold">Milestone/hw12</a></b> &nbsp;&nbsp; <b><a href="/twiki/bin/view/CS5/Homework12Black" class="twikiLink">Milestone/hw12</a></b> --> <!-- <b><a class="twikiLink" href="/twiki/bin/view/CS5/Homework11Gold">Gold HW 11</a></b>      Homework12Gold  <a href="/twiki/bin/view/CS5/ProjectsPage" class="twikiLink">ProjectsPage</a>  -->  &nbsp;&nbsp; will be due on: <font color="darkgreen"><b>Sun., May 3, 11:59pm</b></font> <br>
+	 Next Lab: <b><a href="/twiki/bin/view/CS5/ProjectsPage" class="twikiLink">Final projects</a></b> <!-- <b><a href="/twiki/bin/view/CS5/Lab11" class="twikiLink">Lab 11: vPython!</a></b>   <b><a class="twikiLink" href="/twiki/bin/view/CS5/Homework12Gold">Open lab: FSMs, ExCr, or projects</a></b>    --> &nbsp;&nbsp; will be held on: Mon. April 27 or Tue. April 28 <br>
+	 Submissions: <a href="http://www.cs.hmc.edu/submit">CS submission site</a>
+  </div>
+</div>
+<p />
+<div class="main">
+<a name="text"></a><h3><a name="Extra_Credit_Lab_5_File_Upload_a"></a> Extra Credit Lab 5: File Upload and Analysis </h3>
+Your goal in this assignment is to create a small web application that uploads and analyzes a file of text. For this week, you may assume that the file is, in fact, an ASCII text file.
+<hr />
+<strong>To Do:</strong> Implement a web application that uses <ul>
+<li> HTML + CSS
+</li> <li> CGI
+</li></ul> 
+and allows an end user to upload a file and receive statistics about that file.
+<hr />
+<h5><a name="Example_Interface"></a> Example Interface </h5>
+<img src="http://www.cs.hmc.edu/~paelionmoss/upload1.png" alt="upload1.png" />
+<p />
+<br />
+<p />
+Note that the file has 4 lines because the last line is just a plain newline. <br>
+<img src="http://www.cs.hmc.edu/~paelionmoss/upload2.png" alt="upload2.png" />
+<p />
+<br /><hr />
+<p />
+<h5><a name="HTML_Details"></a> HTML Details </h5>
+In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use CGI to allow your front page to call the python script you have written. This is also an opportunity to learn how to upload and save files using HTML and CGI. The HTML for your front page can be extremely brief. If it's getting too complicated you may need to step back and rethink your design. <ul>
+<li> A good reference for file upload can be found at <a href="http://webpython.codepoint.net/cgi_file_upload" target="_top">http://webpython.codepoint.net/cgi_file_upload</a>.
+</li> <li> Remember that the easiest way to use CGI is with the action attribute of a form.
+</li> <li> The second page will be HTML printed by your Python script.
+</li> <li> As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
+</li></ul> 
+Here is the HTML for your front page. It will look identical to the example. You should change the link of the CSS file to link to your own favorite style sheet.
+<pre>
+&#60;html&#62;
+&#60;head&#62;
+&#60;link rel&#61;&#39;stylesheet&#39; type&#61;&#39;text/css&#39; href&#61;&#39;mystyle.css&#39; /&#62;
+&#60;title&#62;File Upload and Analysis&#60;/title&#62;
+&#60;/head&#62;
+&#60;body&#62;
+&#60;h2&#62;Please upload a file for analysis:&#60;/h2&#62;
+&#60;form enctype&#61;&#34;multipart/form-data&#34; action&#61;&#34;upload.py&#34; method&#61;&#34;post&#34;&#62;
+&#60;p&#62;File: &#60;input type&#61;&#34;file&#34; name&#61;&#34;file&#34;&#62;&#60;/p&#62;
+&#60;p&#62;&#60;input type&#61;&#34;submit&#34; value&#61;&#34;Upload&#34;&#62;&#60;/p&#62;
+&#60;/form&#62;
+&#60;/body&#62;
+&#60;/html&#62;
+</pre>
+Note that the python script that this code calls is named upload.py.
+<p />
+<h5><a name="Python_Details"></a> Python Details </h5> <ul>
+<li> <strong>Don't forget</strong> to have      <pre>
+   import cgi
+   import sys # Notice this is new. This allows your python script to abort.
+   import os # Notice this is new. It is used to deal with the filenames.
+   import cgitb; cgitb.enable()
+</pre>      at the top of your python file.
+</li> <li> <strong>Don't forget</strong> that your script's output must start with 
+</li></ul> 
+<pre>
+   print &#34;Content-Type: text/html; charset&#61;ISO-8859-1\n\n&#34;
+   print
+</pre>
+<h5><a name="Handling_File_Upload"></a> Handling File Upload </h5>
+Below is CGI code to save the uploaded file.
+<p />
+<b>Code to save uploaded file:</b>
+<pre>
+form &#61; cgi.FieldStorage()
+
+fileitem &#61; form&#91;&#39;file&#39;]
+
+if fileitem.filename:
+   
+   fn &#61; os.path.basename(fileitem.filename)
+   open(&#39;files/&#39; + fn, &#39;wb&#39;).write(fileitem.file.read())
+   
+else:
+   sys.exit(0)
+</pre>
+This will save the uploaded file into a new directory named <code>files</code>, which is located in the same directory as your <code>upload.py</code> file. The <code>files</code> directory <strong>must</strong> already exist otherwise this script will not work. Alternatively, you could just not put the uploaded files into a subdirectory if you would like by changing the <code>open</code> line to <code>open(fn, 'wb').write(fileitem.file.read())</code>.
+<p />
+<p />
+<b>The analysis: part 1</b><br />
+You will need to make an application that
+<p /> <ul>
+<li> counts all of the words in the file
+</li> <li> counts all of the lines in the file
+</li> <li> counts all of the characters in the file
+</li></ul> 
+<p />
+Then, print out those three numbers at the top of your output page.
+<p />
+Be sure to try this out with one or two small files -- and check that the answers are correct!
+<p />
+Details like... should we count blank characters (spaces, newlines)? are up to you to decide -- any consistent approach is OK. For example, in the interface above, space characters and newline characters are counted. In fact, there is a blank line at the end of the file, which is why it reports four lines instead of 3.
+<br /><b>The analysis: part 2</b><br />
+For the second part of this project, keep the existing text of the file and, below it, add a list of words from the file - and their frequencies.
+<p />
+For full credit, you should output the words in decreasing order of frequency, so that the most common appearing word is first, the second most common word is second, and so on.
+Most credit (80%) is available for a result that has all of the words in any order at all. 
+<p />
+<hr />
+<p />
+<strong>Note:</strong> For these functions, we would like you to do your debugging by first making sure your program works from the Python shell before implementing it in CGI.
+<p />
+<strong>'Nother Note:</strong> Aside from the other additional lines which need to be added to your Python scripts in order that they run in CGI, do not forget that the <em>top</em> line of each Python script will look similar to:
+<ul>
+<li> <code>#!C:/Python27/python.exe</code> for Windows users, or </li>
+<li> <code>#!/usr/local/bin/python</code> for Mac users</li>
+</ul>
+<p />
+<strong>Not the Last Note:</strong> Make sure that before you start printing your HTML page you add the following code to your script:
+<pre>   print &#34;Content-Type: text/html; charset&#61;ISO-8859-1\n\n&#34;
+   print </pre>
+<p />
+<strong>Last Note:</strong> Lastly, remember to include the lines: 
+<pre>   import cgi
+   import cgitb; cgitb.enable() </pre> <ul>
+<li> The cgi module allows you to access the data from the form you will use to call the python script.
+</li> <li> The cgitb module will allow python error output to be displayed on your web browser if something goes wrong. It is very helpful for troubleshooting.
+</li></ul> 
+<p />
+<p />
+<h3><a name="Syllable_Counting"></a> Syllable Counting </h3>
+<p />
+Your <code>syllables( word )</code> function need only count syllables in words containing only capital or lowercase letters. When writing your code that counts syllables in a word, you should assume: <ul>
+<li> A vowel is a capital or lowercase a, e, i, o, u, or y.
+</li> <li> A syllable occurs in a given word whenever: <ul>
+<li> Rule 1: a vowel is at the start of a word
+</li> <li> Rule 2: a vowel follows a consonant in a word
+</li> <li> Rule 3: there is one exception: if a lone vowel <code>e</code> or <code>E</code> is at the end of a word, then that vowel does not count as a syllable.
+</li> <li> Rule 4: finally, everything that is a word must always count as having at least one syllable.
+</li></ul> 
+</li></ul> 
+<p />
+Here are some shell examples -- this <strong>definitely</strong> is not an exhaustive list of possibilities! You will want to test some other cases, as well.
+<p />
+<pre>
+&#62;&#62;&#62; syllables( &#39;syllables&#39; )
+3
+&#62;&#62;&#62; syllables( &#39;one&#39; )
+1
+&#62;&#62;&#62; syllables( &#39;science&#39; )  # it&#39;s not always correct...
+1
+</pre>
+<p />
+These rules do not always match the number of syllables that English speakers would agree on, but for our purposes, and especially for the purpose of readability calculation which we will do later on, these rules will suffice.
+<p />
+An example of how your interface might look:
+<p />
+<img src="https://www.cs.hmc.edu/~sjohnson/SyllableCounting/Picture 1.png">
+<p />
+<img src="https://www.cs.hmc.edu/~sjohnson/SyllableCounting/Picture 2.png">
+<p />
+But, as always, this is merely an example of what your interface <em>may</em> look like. Creativity is absolutely encouraged, and certainly preferred.
+<p />
+<p />
+-- <a class="twikiLink" href="/twiki/bin/view/Main/SarahJohnson">SarahJohnson</a> - 08 Jun 2010
+<p />
+<p />
+-- <a class="twikiLink" href="/twiki/bin/view/Main/BridgetteEichelberger">BridgetteEichelberger</a> - 06 Jun 2011<a name="bottom"></a>
+</div>
+<p />
+<div class="footer">
+<p />
+</div>
+<p />
+</body>
+</html>

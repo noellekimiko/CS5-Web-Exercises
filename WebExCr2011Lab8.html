@@ -1,0 +1,223 @@
+<html>
+<p />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+  <base href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab8"> 
+
+  <title>CS5 - WebExCr2011Lab8</title>
+
+
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <style type="text/css">
+  .header {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  //.sidebar {
+  //  background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  //}
+  .subheader {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  .footer {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  </style>
+</head>
+<p />
+<body class="composite">
+<p />
+<a name="top"></a>
+<p />
+<div class="header">
+  <img class="logo" src="http://www.cs.hmc.edu/~cs5grad/cs5/images/cs5_logo.png">
+</div>
+<p />
+<p />
+<div class="subheader">
+  <a class="twikiLink" href="/twiki/bin/view/CS5/WebHome">CS5 Web</a> &gt; <a href="/twiki/bin/view/CS5/WebCS5DevelopmentPage" class="twikiLink">WebCS5DevelopmentPage</a> &gt;
+  <a class="twikiLink" href="/twiki/bin/view/CS5/WebExCr2011Lab8">WebExCr2011Lab8</a>
+  <div style="margin-bottom: 6px;">
+	 <b>Next HW</b>: &nbsp;&nbsp; <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!--and <a href="/twiki/bin/view/CS5/Homework8Gold" class="twikiLink">HW 8</a></b>--> <!-- <b><a href="/twiki/bin/view/CS5/Homework12Gold" class="twikiLink">Milestone/hw12</a></b> &nbsp;&nbsp; <b><a href="/twiki/bin/view/CS5/Homework12Black" class="twikiLink">Milestone/hw12</a></b> --> <!-- <b><a class="twikiLink" href="/twiki/bin/view/CS5/Homework11Gold">Gold HW 11</a></b>      Homework12Gold  <a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">ProjectsPage</a>  -->  &nbsp;&nbsp; will be due on: <font color="darkgreen"><b>Sun., May 3, 11:59pm</b></font> <br>
+	 Next Lab: <b><a href="/twiki/bin/view/CS5/ProjectsPage" class="twikiLink">Final projects</a></b> <!-- <b><a href="/twiki/bin/view/CS5/Lab11" class="twikiLink">Lab 11: vPython!</a></b>   <b><a class="twikiLink" href="/twiki/bin/view/CS5/Homework12Gold">Open lab: FSMs, ExCr, or projects</a></b>    --> &nbsp;&nbsp; will be held on: Mon. April 27 or Tue. April 28 <br>
+	 Submissions: <a href="http://www.cs.hmc.edu/submit">CS submission site</a>
+  </div>
+</div>
+<p />
+<div class="main">
+<a name="text"></a><h4><a name="Lab_8_Picture_Flashcards_and_JQu"></a> Lab 8: Picture Flashcards and JQuery </h4>
+   In this lab, we will modify the code from Lab 7 to include pictures in our flashcards. We will also introduce JQuery to improve button functionality (toggle!).  If you have not done Lab 7, here are the starter files from Lab 7: <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/Lab_7_Starter_Files/flashcards.js" target="_top">flashcards.js</a> <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/Lab_7_Starter_Files/flashcards.html" target="_top">flashcards.html</a>.
+<p />
+For testing purposes, we also include a sample <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/lab8starterfiles/database.txt" target="_top">database</a> and <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/lab8starterfiles/flashcards" target="_top">flashcards</a> (both of which might go in your web folder).
+<p />
+<h5><a name="Sample_Interface"></a> Sample Interface </h5>
+<p />
+<center>
+<img border="0" src="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/lab8starterfiles/lab8index.png" alt="Lab 8 index">
+<p />
+<font color=gray> The first page of our website had forms for the user to input a photo file.</font>
+<p />
+<img border="0" src="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/lab8starterfiles/lab8solo.png" alt="I love Han Solo">
+<p />
+<img border="0" src="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/lab8starterfiles/lab8han.png" alt="Han Solo">
+<p />
+<font color=gray> Clicking the toggle button will show the answer and give your user the option to never see the card again.</font>
+</center>   
+<p />
+<h5><a name="HTML_Details"></a> HTML Details </h5> <ul>
+<li> One thing to consider is the body <code>onload</code> attribute. This allows you to call a javascript function (perhaps to show a photo) as soon as the HTML of the page is loaded.
+</li> <li> For your upload page you will want to use a form with a file input as follows:
+</li></ul> 
+<pre>
+   &#60;form enctype&#61;&#34;multipart/form-data&#34; action&#61;&#34;your&#95;python&#95;script.py&#34; method&#61;&#34;post&#34;&#62;
+   .
+   .
+   .
+   Somewhere in here you should have an input for a file: &#60;input type&#61;&#34;file&#34; name&#61;&#34;file&#34;&#62; as well
+   as a text input for the answer and a submit input.
+   &#60;/form&#62;
+</pre>
+<p /> <ul>
+<li> The most notable change for the HTML test page is displaying an image instead of a question. This can be achieved using the <tt>img</tt> tag in the flashcard <tt>div</tt>.
+</li></ul> 
+<p />
+<h5><a name="Javascript_Details"></a> Javascript Details </h5>
+You will use javascript to display and change the pictures. <code>flashcards.js</code> (provided in Lab 7) file will give all of the needed functionality.
+<p /> <ul>
+<li> In order to support uploaded picture files, you will need to replace <pre>document.getElementById(&#34;Question&#34;).innerHTML&#61;QName</pre>with <pre>document.getElementById(&#34;pic&#34;).src&#61;&#34;./flashcards/&#34; +picName;</pre> in the initialize() function.
+</li></ul> 
+<p /> <ul>
+<li> In the line above, you need to redefine <tt>QName</tt> as <tt>picName</tt>.
+</li></ul> 
+<p />
+<h3><a name="First_a_Short_JQuery_Introductio"></a> First, a Short JQuery Introduction </h3>
+JQuery is a built in library of functions for Javascript, and makes relatively difficult (re: fun) interactions on your webpage simple!
+In order to use the JQuery library you will need to put the following code in the head of your HTML document.
+<pre>
+&#60;script type&#61;&#34;text/javascript&#34; 
+     src&#61;&#34;http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js&#34;&#62;&#60;/script&#62;
+</pre>
+This will allow you pull from the library google hosts rather than having to download the library to your own computer.
+<p />
+For practice, place the following code in a document called <tt>jquery.html</tt> in your web directory:
+<p />
+<pre>
+&#60;html&#62;
+&#60;head&#62;
+&#60;script type&#61;&#34;text/javascript&#34; 
+     src&#61;&#34;http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js&#34;&#62;&#60;/script&#62;
+&#60;script type&#61;&#34;text/javascript&#34;&#62;
+$(document).ready(function(){
+  $(&#34;button&#34;).click(function(){
+    $(&#34;p&#34;).hide();
+  });
+});
+&#60;/script&#62;
+&#60;/head&#62;
+
+&#60;body&#62;
+&#60;h2&#62;The Road Not Taken&#60;/h2&#62;
+&#60;p class&#61;&#34;frost&#34; id&#61;&#34;one&#34;&#62; Two roads diverged in a yellow wood, 
+&#60;p class&#61;&#34;robert&#34; id&#61;&#34;two&#34;&#62; And sorry I could not travel both 
+&#60;p class&#61;&#34;frost&#34; id&#61;&#34;three&#34;&#62; And be one traveler, long I stood 
+&#60;p class&#61;&#34;frost&#34; id&#61;&#34;four&#34;&#62; And looked down one as far as I could 
+&#60;p class&#61;&#34;robert&#34; id&#61;&#34;five&#34;&#62; To where it bent in the undergrowth; 
+&#60;br&#62;
+&#60;br&#62;
+&#60;button&#62;Hide!!&#60;/button&#62;
+&#60;/body&#62;
+&#60;/html&#62;</pre>
+<p />
+You can easily view your webpage by opening the file with your web browser, or you can use the python CGI server as before if you like. 
+<p />
+Clicking on the "Hide" button will hide all of the text with a <tt>p</tt> tag, since the built-in JQuery function <tt> $("p").hide();</tt> targets all p tags. The general format for JQuery functions is $("<b>target</b>").<b>function</b>(). The functions that we will be most interested in for out flashcards are hide(), show(), and toggle().
+<p />
+Notice that in the paragraph tags for the first and second lines, we have specified the class and id for each paragraph. <pre>p class&#61;&#34;frost&#34; id&#61;&#34;one&#34;</pre> The class for this paragraph is frost and the id is one. Classes can be used to specify different objects, and objects in one class can have many different ids. We can make JQuery target specific classes or ids by changing the text inside the parentheses before the function call.
+<p />
+To target a specific class, replace the target with a period followed by the class name, eg., <tt>.para</tt>.
+To target a specific id, replace the target text with a pound sign followed by the id, eg., <tt>#one</tt>.
+<p />
+To hide something initially, you will have to include the following line after the (document).ready(function(), which starts when the page loads:
+<pre>$(&#39;&#60;b&#62;something&#60;/b&#62;&#39;).hide();</pre>
+<p />
+Another function that might be useful is toggle(), which allows you to use the same button for hide and show- when the text is visible, toggle hides it, and when it is hidden, toggle shows it.
+<p />
+<h4><a name="jquery_html"></a> jquery.html </h4>
+<p />
+In your <tt>jquery.html</tt> file, <ul>
+<li> Replace the "Hide" button with a button that toggles the "frost" class
+</li> <li> and make the "frost" class initially hidden, so that pressing the toggle button once reveals the text
+</li></ul> 
+<p />
+make sure to save and submit <tt>jquery.html</tt>!
+<p />
+<h4><a name="JQuery_and_flashcards_js"></a> JQuery and flashcards.js </h4>
+<p />
+<p />
+Applying this to your flashcards, the easiest way to accomplish a "Toggle" button is to eliminate the answer() function, and move the line
+<pre>document.getElementById(&#34;response&#34;).innerHTML &#61; &#34;&#60;br&#62;&#60;br&#62; The correct answer is &#34; + AnsArray&#91;randomnumber]</pre>
+to the newcard function, just below the line <pre>document.getElementById(&#34;pic&#34;).src&#61;&#34;/flashcards/&#34; +picName;</pre>
+<p />
+Perhaps you can group the items affected by the toggle button into one class, and then call the JQuery functions on the class...
+<p />
+In the last lab, we called the function answer() using the <tt>onClick</tt> event handler. You will want to get rid of this, because you will bind a JQuery function to the event, ie,
+<pre>  
+$(&#34;#Toggle&#34;).click(function(){ 
+  your functions here
+});</pre> 
+if your Toggle button had an <tt>id = Toggle</tt>.
+<p />
+<h5><a name="Python_Details"></a> Python Details </h5> <ul>
+<li> <strong>Don't forget</strong> to have at the <em>very</em> top of your python file either <ul>
+<li> <code>#!C:/Python26/python.exe</code> if you are using a Windows machine, or
+</li> <li> <code>#!/usr/local/bin/python</code> if you are using a Mac. (Remember that the server to which you will submit everything is on a Mac!) <br /><br />
+</li></ul> 
+</li> <li> Also remember to include
+</li></ul> 
+<pre>
+   import cgi
+   import os
+   import cgitb; cgitb.enable()
+</pre>
+   near the top of your python file. <ul>
+<li> You will have to create a cgi <span class="twikiNewLink">FieldStorage<a rel="nofollow" href="/twiki/bin/edit/CS5/FieldStorage?topicparent=CS5.WebExCr2011Lab8" title="Create this topic"><sup>?</sup></a></span> object to grab the data from the form:
+</li></ul> 
+<pre>
+   form &#61; cgi.FieldStorage()
+
+   fileitem &#61; form&#91;&#39;file&#39;]
+
+   if fileitem.filename:
+   
+      fn &#61; os.path.basename(fileitem.filename)
+      open(&#39;flashcards/&#39; + fn, &#39;wb&#39;).write(fileitem.file.read())
+      os.chmod(&#39;flashcards/&#39; + fn, 0644)
+   else:
+      sys.exit(0)
+</pre>
+   This code will grab the file (whose name in the form must be <code>file</code>) and save it in a subdirectory named <code>flashcards</code>, so you will need to create a folder names <tt>flashcards</tt>. You can change where the file is saved if you'd like. The os.chmod line will change the permissions on this file so that it is world readable, allowing other people to view the images from the internet. Notice that you will still need to grab the answer field of the form and then you will need to append everything to your file. <ul>
+<li> The open(filename, mode) command will allow you to open a file. <ul>
+<li> In this case, since you want to append to the file, the mode should be 'a'.
+</li> <li> For example, <pre>f &#61; open(&#39;flash.txt&#39;, &#39;a&#39;)</pre>
+</li></ul> 
+</li></ul> 
+<p />
+-- <a href="/twiki/bin/view/Main/BridgetteEichelberger" class="twikiLink">BridgetteEichelberger</a> - 09 Jun 2011<a name="bottom"></a>
+</div>
+<p />
+<div class="footer">
+<p />
+</div>
+<p />
+</body>
+</html>

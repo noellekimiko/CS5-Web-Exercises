@@ -1,0 +1,193 @@
+<html>
+<p />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+  <base href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab4"> 
+
+  <title>CS5 - WebExCr2011Lab4</title>
+
+
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <style type="text/css">
+  .header {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  //.sidebar {
+  //  background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  //}
+  .subheader {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  .footer {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  </style>
+</head>
+<p />
+<body class="composite">
+<p />
+<a name="top"></a>
+<p />
+<div class="header">
+  <img class="logo" src="http://www.cs.hmc.edu/~cs5grad/cs5/images/cs5_logo.png">
+</div>
+<p />
+<p />
+<div class="subheader">
+  <a class="twikiLink" href="/twiki/bin/view/CS5/WebHome">CS5 Web</a> &gt; <a href="/twiki/bin/view/CS5/WebCS5DevelopmentPage" class="twikiLink">WebCS5DevelopmentPage</a> &gt;
+  <a class="twikiLink" href="/twiki/bin/view/CS5/WebExCr2011Lab4">WebExCr2011Lab4</a>
+  <div style="margin-bottom: 6px;">
+	 <b>Next HW</b>: &nbsp;&nbsp; <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!--and <a href="/twiki/bin/view/CS5/Homework8Gold" class="twikiLink">HW 8</a></b>--> <!-- <b><a class="twikiLink" href="/twiki/bin/view/CS5/Homework12Gold">Milestone/hw12</a></b> &nbsp;&nbsp; <b><a href="/twiki/bin/view/CS5/Homework12Black" class="twikiLink">Milestone/hw12</a></b> --> <!-- <b><a href="/twiki/bin/view/CS5/Homework11Gold" class="twikiLink">Gold HW 11</a></b>      Homework12Gold  <a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">ProjectsPage</a>  -->  &nbsp;&nbsp; will be due on: <font color="darkgreen"><b>Sun., May 3, 11:59pm</b></font> <br>
+	 Next Lab: <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!-- <b><a href="/twiki/bin/view/CS5/Lab11" class="twikiLink">Lab 11: vPython!</a></b>   <b><a href="/twiki/bin/view/CS5/Homework12Gold" class="twikiLink">Open lab: FSMs, ExCr, or projects</a></b>    --> &nbsp;&nbsp; will be held on: Mon. April 27 or Tue. April 28 <br>
+	 Submissions: <a href="http://www.cs.hmc.edu/submit">CS submission site</a>
+  </div>
+</div>
+<p />
+<div class="main">
+<a name="text"></a><h3><a name="Extra_Credit_Lab_4_JavaScript_an"></a> Extra Credit Lab 4: JavaScript and The Caesar Cipher </h3>
+<p />
+In cryptography, a Caesar Cipher is one of the simplest and most well known encryption techniques. It is so named because it was used by Julius Caesar to communicate with his generals who were spread across the Roman empire. The basic idea of the caesar cipher is to shift every letter in a message by a predetermined number. Thus, a caesar cipher with a shift of 3 would transform A to D, B to E, etc... You can read more about the caesar cipher here: <a href="http://en.wikipedia.org/wiki/Caesar_cipher" target="_top">http://en.wikipedia.org/wiki/Caesar_cipher</a>
+<p />
+<hr />
+<strong>To Do:</strong> Implement a web application that uses <ul>
+<li> HTML + CSS
+</li> <li> JavaScript
+</li></ul> 
+and allows an end user to specify a message to encrypt and how far to shift it by, then shows the encrypted message.
+<hr />
+<p />
+<h5><a name="Example_Interface"></a> Example Interface </h5>
+<p />
+<img src="http://www.cs.hmc.edu/~paelionmoss/encipher.png" alt="encipher.png" />
+<p />
+<br />
+<p />
+<img alt="finalencipher.png" src="http://www.cs.hmc.edu/~paelionmoss/finalencipher.png" />
+<hr />
+<p />
+<p />
+<h5><a name="Web_Details"></a> Web Details </h5>
+<p />
+In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use JavaScript to allow your front page to call the functions you have written. <ul>
+<li> As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
+</li></ul> 
+<p />
+<h5><a name="Python_Details"></a> Python Details </h5>
+<p />
+Note: You should have written <tt>encipher</tt> in <a href="https://www.cs.hmc.edu/twiki/bin/view/CS5/CaesarCipherGold" >Homework 3 Problem 2</a> but if you do not already have it the details are below.
+<p />
+<p />
+<code>encipher( S , n )</code> takes as input a string <code>S</code> and a non-negative integer <code>n</code>. This function returns a new string in which the letters in <code>S</code> have been rotated by <code>n</code> characters (note that if <code>n</code> is greater than 26 the shifting will wrap. The modulus operator, %, could be very useful here). For this problem, you should assume that upper-case letters are "rotated" to upper-case letters, lower-case letters are "rotated" to lower-case letters, and all non-alphabetic characters are left <i>unchanged</i>.  For example, if we were to shift the letter <code>'y'</code> by 3, we would get <code>'b'</code> and if we were to shift the letter <code>'Y'</code> by 3 we would get <code>'B'</code>.
+(In python, you can use the test <tt>if 'a' &lt;= c &lt;= 'z':</tt> to determine if a character <code>c</code> is between <code>'a'</code> and <code>'z'</code> in the alphabet.)   
+<p />
+<p />
+You can write <code>encipher</code> any way you like, using functional programming, loops, or recursion. You may wish to write a helper function that "rotates" a single character by <code>n</code> spots, wrapping around the alphabet as appropriate. Then, you might use this helper function to encipher your string. 
+It's up to you how you do this! (Remember that uppercase letters wrap around the alphabet to uppercase letters, and
+lowercase letters wrap always to lowercase letters.)
+<p />
+Remember that testing your python functions before you move on to the rest of the assignment is always a good idea. You might want to check independently that encipher is working and also that the final script prints out the Trash.CS5HTML that you think it will.
+<p />
+<p />
+As a reminder, the built-in functions <code>ord</code> and <code>chr</code> convert from single-character strings to integers and back.
+For example, <code>ord('a')</code> outputs <code>97</code> and <code>chr(97)</code> outputs <code>'a'</code>. These functions will make this problem much easier!
+<p />
+<p />
+Some encipher examples:
+<code><pre>
+>>> encipher('xyza', 1)
+'yzab'
+
+>>> encipher('Z A', 1)
+'A B'
+
+>>> encipher('*ab?', 1)
+'*bc?'
+
+>>> encipher('This is a string!', 1)
+'Uijt jt b tusjoh!'
+
+>>> encipher('Caesar cipher? I prefer Caesar salad.', 25)
+'Bzdrzq bhogdq? H oqdedq Bzdrzq rzkzc.'
+</pre></code>
+<p />
+<h3><a name="JavaScript"></a><a name="_JavaScript"></a> JavaScript </h3>
+<p />
+In the previous lab we handled form data by calling a python script which would create a new HTML page.  However, if we simply want to change a small portion of a page it becomes infeasible to send information back to the server and change a detail and recreate the rest of the page.  This is where JavaScript comes in handy. JavaScript allows for these changes to be made on the user's end.  For this lab we will handle our form data using JavaScript and return the result to the page.
+<p />
+You will need to include the following script tags in your document.  They can be placed in the head, body or you could use an external JavaScript file.  For now I recommend putting them right before the end of the body.
+<pre>
+&#60;script type&#61;&#34;text/!JavaScript&#34;&#62;
+... some !JavaScript code ...
+&#60;/script&#62;
+</pre>
+These script tags will be where you will put all of your JavaScript code.
+<p />
+<h4><a name="JavaScript_Syntax"></a><a name="_JavaScript_Syntax"></a> JavaScript Syntax </h4> <ul>
+<li> Functions      <pre>
+function encipher( str, shift )
+{
+...
+}
+      </pre>
+</li> <li> If/Else      <pre>
+if (condition)
+{
+ code to be executed if condition is true
+}
+else
+{
+ code to be executed if condition is not true
+}
+</pre>
+</li> <li> For Loops      <pre>
+var i&#61;0;
+for (i&#61;0;i&#60;&#61;5;i++)
+{
+  document.write(&#34;The number is &#34; + i);
+  document.write(&#34;&#60;br /&#62;&#34;);
+}
+</pre>      <b>Note:</b> In the above example we had to declare the variable before using it for our loop by saying <tt>var i</tt>.  All variables must be declare in this way, using <tt>var</tt>, before they can be used.  This can also be done within the loop by saying,      <pre>
+for (var i&#61;0; i&#60;5; i++)
+{
+  document.write(&#34;The number is &#34; + i);
+  document.write(&#34;&#60;br /&#62;&#34;);
+}
+</pre>
+</li> <li> Getting Elements<br>     When using JavaScript you can refer to specific elements of the HTML in order to make changes.  For this to work you must first make sure your HTML tag for the element has an id.  It is important to note that ids are unique and two elements on the page should not have the same id.  To add an id to an element you can simple include <tt>id="spam"</tt> within the open tag for the element you want to be called spam.  Then to access this element in JavaScript you can use the following line.     <pre>
+document.getElementById(&#39;spam&#39;);
+</pre>      You will then have the ability to modify parts of the element using methods like <tt>.innerHTML</tt> or <tt>.src</tt>.
+</li></ul> 
+<p />
+<p /> <ul>
+<li> Events<br>      Another import part of JavaScript that you will need to know are events.  Events allow you bind some action with a function.  Some examples of events are, keystrokes, a mouse click, a mouse over or submitting a form.  This last one will mostly likely be the one you want to use.      For this you will want your form tag to look something like this:      <pre>
+&#60;form method&#61;&#34;post&#34; action&#61;&#34;&#42;xxx&#42;.htm&#34; onsubmit&#61;&#34;checkForm()&#34;&#62;
+</pre>      Where <tt>checkForm()</tt> is the function you want to bind to the onSubmit event and is already written within your script tags.
+</li></ul> 
+<p />
+So, you will convert your python function that enciphers a phrase to JavaScript. Then using HTML, you will create the webpage interface, and with the code directly above, call your function.
+<p />
+<p />
+For more event information check out <a href="http://www.w3schools.com/js/js_events.asp" >w3schools JavaScript Events</a>.
+<p />
+For more JavaScript information check out <a href="http://www.w3schools.com/js/default.asp" >w3schools JavaScript Tutorial</a>.
+<p />
+-- <a class="twikiLink" href="/twiki/bin/view/Main/BridgetteEichelberger">BridgetteEichelberger</a> - 06 Jun 2011<a name="bottom"></a>
+</div>
+<p />
+<div class="footer">
+<p />
+</div>
+<p />
+</body>
+</html>

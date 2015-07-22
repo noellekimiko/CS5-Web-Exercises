@@ -1,0 +1,128 @@
+<html>
+<p />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+  <base href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab10"> 
+
+  <title>CS5 - WebExCr2011Lab10</title>
+
+
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <style type="text/css">
+  .header {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  //.sidebar {
+  //  background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  //}
+  .subheader {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  .footer {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  </style>
+</head>
+<p />
+<body class="composite">
+<p />
+<a name="top"></a>
+<p />
+<div class="header">
+  <img class="logo" src="http://www.cs.hmc.edu/~cs5grad/cs5/images/cs5_logo.png">
+</div>
+<p />
+<p />
+<div class="subheader">
+  <a class="twikiLink" href="/twiki/bin/view/CS5/WebHome">CS5 Web</a> &gt; <a class="twikiLink" href="/twiki/bin/view/CS5/WebCS5DevelopmentPage">WebCS5DevelopmentPage</a> &gt;
+  <a href="/twiki/bin/view/CS5/WebExCr2011Lab10" class="twikiLink">WebExCr2011Lab10</a>
+  <div style="margin-bottom: 6px;">
+	 <b>Next HW</b>: &nbsp;&nbsp; <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!--and <a class="twikiLink" href="/twiki/bin/view/CS5/Homework8Gold">HW 8</a></b>--> <!-- <b><a href="/twiki/bin/view/CS5/Homework12Gold" class="twikiLink">Milestone/hw12</a></b> &nbsp;&nbsp; <b><a href="/twiki/bin/view/CS5/Homework12Black" class="twikiLink">Milestone/hw12</a></b> --> <!-- <b><a href="/twiki/bin/view/CS5/Homework11Gold" class="twikiLink">Gold HW 11</a></b>      Homework12Gold  <a href="/twiki/bin/view/CS5/ProjectsPage" class="twikiLink">ProjectsPage</a>  -->  &nbsp;&nbsp; will be due on: <font color="darkgreen"><b>Sun., May 3, 11:59pm</b></font> <br>
+	 Next Lab: <b><a href="/twiki/bin/view/CS5/ProjectsPage" class="twikiLink">Final projects</a></b> <!-- <b><a class="twikiLink" href="/twiki/bin/view/CS5/Lab11">Lab 11: vPython!</a></b>   <b><a href="/twiki/bin/view/CS5/Homework12Gold" class="twikiLink">Open lab: FSMs, ExCr, or projects</a></b>    --> &nbsp;&nbsp; will be held on: Mon. April 27 or Tue. April 28 <br>
+	 Submissions: <a href="http://www.cs.hmc.edu/submit">CS submission site</a>
+  </div>
+</div>
+<p />
+<div class="main">
+<a name="text"></a><h2><a name="Extra_Credit_Lab_10_Enter_the_Pi"></a> Extra Credit Lab 10: Enter the Picobot </h2>
+<p />
+In this extra credit lab, you will implement  <ul>
+<li> HTML/HTML5 Canvas
+</li> <li> Javascript
+</li> <li> CSS
+</li></ul> 
+to create a web based Picobot app, as used in the first homework assignment.
+<p />
+The starter files are <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/lab10starterfiles/picobot.html" target="_top">picobot.html</a> and <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/lab10starterfiles/picobot.js" target="_top">picobot.js</a>
+<p />
+<h4><a name="An_Intro_to_HTML5_Canvas"></a> An Intro to HTML5 Canvas </h4>
+<p />
+Why get excited about HTML5 Canvas? Several super cool web apps use Canvas because it is great for games and animation- the most notable examples include iPhone app <a href="http://10k.aneventapart.com/Uploads/83/#" target="_top">Sinuous</a>, <a href="http://www.effectgames.com/demos/canvascycle/" target="_top">images which use 8-bit color-cycling a'la retro gaming</a>, <a href="http://bomomo.com/" target="_top">Bomomo</a>, <a href="http://10k.aneventapart.com/Uploads/343/" target="_top">Litesaber Training</a>,<a href="http://spielzeugz.de/html5/liquid-chars.html" target="_top">and the strangely hypnotic liquid characters</a>.
+<p />
+The HTML5 Canvas is an element that you can insert into your HTML document. We would include our own tutorial here, but a good tutorial has already been done <a href="http://diveintohtml5.org/canvas.html" target="_top">here at diveintoHTML5</a>.
+<p />
+We strongly suggest that you try out everything in the first half of the tutorial.
+<p />
+<h4><a name="Sample_Interface"></a> Sample Interface </h4>
+<p />
+<p />
+<img border="0" src="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/lab10starterfiles/picobot.png" alt="Yay" />
+<p />
+We only implemented the empty room: you should feel free to implement the other maps for even more extra credit!
+<p />
+<h4><a name="HTML_Details"></a> HTML Details </h4>
+You will be provided with picobot.html, which contains Picobot's basic functionality. You should spice up the CSS for the grutors, and if you decide to include teleport or other features, include the user interface for those. 
+<p />
+A useful resource for creating banners and other images is <a href="http://www.picnik.com" target="_top">Picnik</a>, on online image manipulation program.
+<p />
+<h4><a name="Javascript_Details"></a> Javascript Details </h4>
+<p />
+You will start with picobot.js, which includes all of the basic functions (with some blanks!) that you will need for implementing the first level of Picobot. 
+<p /> <ul>
+<li> Write reset(), which should move the Picobot to a random location on the board, reset the state, set all squares on board to empty (except walls) and redraw the maze.
+</li></ul> 
+<p /> <ul>
+<li> Write drawMaze(), which will use the same techniques as the HTML5 tutorial above. It will be very useful to loop over all of the columns and rows in the maze and deal with all possibilities accordingly. Here is also where we called countEmpty(), which counted all of the empty (unvisited) cells.
+</li></ul> 
+<p /> <ul>
+<li> Write pause() and resume(), for these you will need clearInterval and setInterval(move, time) These should each be one line functions.
+</li></ul> 
+<p /> <ul>
+<li> Write loadrules(), which should take input from the <span class="twikiNewLink">PicoRules<a rel="nofollow" title="Create this topic" href="/twiki/bin/edit/CS5/PicoRules?topicparent=CS5.WebExCr2011Lab10"><sup>?</sup></a></span> text box and parse it. You should ignore comments that begin with #, and sort the starting state, surroundings, direction, and ending state into the rulesArray. Once all the rules are separated, it may be helpful to split rules on the space character.
+</li></ul> 
+<p /> <ul>
+<li> Write getSurroundings(r,c), which takes in the row and column number of any square on your board and returns the environment in Picobot surroundings form, eg, Nxxx.
+</li></ul> 
+<p /> <ul>
+<li> Write getDirect(), which should call getSurroundings(), then check the current surroundings against your rules array (and current state) to determine the correct direction  for the Picobot to travel (and perhaps state change as well).
+</li></ul> 
+<p /> <ul>
+<li> Write move(), which should get the Picobot's direction from getDirect(), update the location of Picobot (depending on the direction), set that cell in the maze to 'Picobot', and set the cell where Picobot was previously as visited.
+</li></ul> 
+<p /> <ul>
+<li> Write countEmpty(), which loops through all of the cells in the maze and keeps a running tally of the empty ones. Needless to say, if there are no empty cells, then you have won the game!
+</li></ul> 
+<p /> <ul>
+<li> Bonus! Write teleport(direction), which looks up the current bot location, resets the maze (so picobot's path won't carry through), then moves the Picobot. If you implement teleport, then you should also add buttons on your html page that call this function.
+</li></ul> 
+<p />
+Of course, there are also many other features that you can implement! Run Pico-wild!<a name="bottom"></a>
+</div>
+<p />
+<div class="footer">
+<p />
+</div>
+<p />
+</body>
+</html>

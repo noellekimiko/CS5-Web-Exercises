@@ -1,0 +1,220 @@
+<html>
+<p />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+  <base href="https://www.cs.hmc.edu/twiki/bin/view/CS5/WebExCr2011Lab6"> 
+
+  <title>CS5 - WebExCr2011Lab6</title>
+
+
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <link rel="stylesheet"
+		  title="HMCCS5Skin"
+		  type="text/css"
+		  href="/twiki/pub/TWiki/HMCCS5Skin/hmccs5-colors-ltblue.css" >
+  <style type="text/css">
+  .header {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  //.sidebar {
+  //  background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  //}
+  .subheader {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  .footer {
+	 background-image: url(https://www.cs.hmc.edu/~cs5grad/cs5/images/clouds.jpg);
+  }
+  </style>
+</head>
+<p />
+<body class="composite">
+<p />
+<a name="top"></a>
+<p />
+<div class="header">
+  <img class="logo" src="http://www.cs.hmc.edu/~cs5grad/cs5/images/cs5_logo.png">
+</div>
+<p />
+<p />
+<div class="subheader">
+  <a href="/twiki/bin/view/CS5/WebHome" class="twikiLink">CS5 Web</a> &gt; <a href="/twiki/bin/view/CS5/WebCS5DevelopmentPage" class="twikiLink">WebCS5DevelopmentPage</a> &gt;
+  <a href="/twiki/bin/view/CS5/WebExCr2011Lab6" class="twikiLink">WebExCr2011Lab6</a>
+  <div style="margin-bottom: 6px;">
+	 <b>Next HW</b>: &nbsp;&nbsp; <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!--and <a href="/twiki/bin/view/CS5/Homework8Gold" class="twikiLink">HW 8</a></b>--> <!-- <b><a href="/twiki/bin/view/CS5/Homework12Gold" class="twikiLink">Milestone/hw12</a></b> &nbsp;&nbsp; <b><a href="/twiki/bin/view/CS5/Homework12Black" class="twikiLink">Milestone/hw12</a></b> --> <!-- <b><a href="/twiki/bin/view/CS5/Homework11Gold" class="twikiLink">Gold HW 11</a></b>      Homework12Gold  <a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">ProjectsPage</a>  -->  &nbsp;&nbsp; will be due on: <font color="darkgreen"><b>Sun., May 3, 11:59pm</b></font> <br>
+	 Next Lab: <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!-- <b><a href="/twiki/bin/view/CS5/Lab11" class="twikiLink">Lab 11: vPython!</a></b>   <b><a href="/twiki/bin/view/CS5/Homework12Gold" class="twikiLink">Open lab: FSMs, ExCr, or projects</a></b>    --> &nbsp;&nbsp; will be held on: Mon. April 27 or Tue. April 28 <br>
+	 Submissions: <a href="http://www.cs.hmc.edu/submit">CS submission site</a>
+  </div>
+</div>
+<p />
+<div class="main">
+<a name="text"></a><h3><a name="Extra_Credit_Lab_6_AJAX_and_The"></a><a name="Extra_Credit_Lab_6_AJAX_and_The_"></a> Extra Credit Lab 6: AJAX and The Caesar Cipher Part II </h3>
+<p />
+For this problem you will extend the caesar enciphering page that you wrote last week. You should have already written a python function to decipher a message encrypted using a caesar cipher. You will need to integrate the enciphering and deciphering capabilities into a single front end web application.
+<p />
+<hr />
+<strong>To Do:</strong> Implement a web application that uses <ul>
+<li> HTML + CSS
+</li> <li> <span class="twikiNewLink">JavaScript<a rel="nofollow" title="Create this topic" href="/twiki/bin/edit/CS5/JavaScript?topicparent=CS5.WebExCr2011Lab6"><sup>?</sup></a></span>
+</li> <li> AJAX
+</li></ul> 
+and allows an end user to select either enciphering or deciphering capability using a radio button. Then, the user will fill in appropriate text boxes and receive either an encrypted or decrypted message.
+<hr />
+<p />
+<h5><a name="Example_Interface"></a> Example Interface </h5>
+<p />
+<img src="http://www.cs.hmc.edu/~paelionmoss/caesar.png" alt="caesar.png" />
+<br />
+<p />
+<img alt="decipher.png" src="http://www.cs.hmc.edu/~paelionmoss/decipher.png" />
+<p />
+<hr />
+<p />
+<h5><a name="Web_Details"></a> Web Details </h5>
+In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use AJAX to allow your front page to call the python script you have written. Your front page should only ever call one script. The information in the radio buttons should tell the script which action to take and it should adjust appropriately. <ul>
+<li> <strong>Don't forget</strong> to have
+</li></ul> 
+<pre> 
+    import cgi
+    import cgitb; cgitb.enable()
+</pre>
+   at the top of your python file.
+<!-- <ul>
+<li> <strong>Don't forget</strong> that your script's output must start with 
+</li></ul> 
+<pre>
+    print &#34;Content-Type: text/html; charset&#61;ISO-8859-1\n\n&#34;
+    print
+</pre>
+--> <ul>
+<li> As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
+</li></ul> 
+<p />
+<h5><a name="Python_Details"></a> Python Details </h5>
+<p />
+<code>decipher</code> will be given a string of English text shifted by some amount already; <code>decipher</code> should return the original English string, to the best of its ability. Note: some strings have more than one English "deciphering." What's more, it is very difficult to handle short strings correctly. Thus, your <code>decipher</code> does not have to be perfect.
+<p>
+One approach you could try is to use letter frequencies -- a function is provided at the bottom of this page; feel free to cut-and-paste it into your HW file. Scrabble scores have also been suggested in the past...! You might want also to use some additional "heuristics" (rules of thumb) of your own design.  Also, you are welcome to write one or more small "helper" functions that will help <code>decipher</code>. <strong>Be sure</strong> to describe whatever strategies you used in writing your <code>decipher</code> function in a detailed comment above your <code>decipher</code> function. 
+<p />
+<p />
+As a reminder, the built-in functions <code>ord</code> and <code>chr</code> convert from single-character strings to integers and back.
+For example, <code>ord('a')</code> outputs <code>97</code> and <code>chr(97)</code> outputs <code>'a'</code>. These functions will make this problem much easier!
+<p />
+Some decipher examples:
+<code><pre>
+>>> decipher('Bzdrzq bhogdq? H oqdedq Bzdrzq rzkzc.')
+'Caesar cipher? I prefer Caesar salad.'  
+
+>>> decipher('Hu lkbjhapvu pz doha ylthpuz hmaly dl mvynla '\
+              'lclyfaopun dl ohcl slhyulk.')
+'An education is what remains after we forget everything we have learned.'
+
+>>> decipher('Onyx balks')
+'Edon rqbai'  # wrong! it was 'Onyx balks' but there might be
+              another rule I could add...
+</pre></code>
+<p />
+<p />
+Here is the letter-probability function and its source:
+<pre>
+# table of probabilities for each letter...
+def letProb( c ):
+    &#34;&#34;&#34; if c is the space character or an alphabetic character,
+        we return its monogram probability (for english),
+        otherwise we return 1.0 We ignore capitalization.
+        Adapted from
+        http://www.cs.chalmers.se/Cs/Grundutb/Kurser/krypto/en&#95;stat.html
+    &#34;&#34;&#34;
+    if c &#61;&#61; &#39; &#39;: return 0.1904
+    if c &#61;&#61; &#39;e&#39; or c &#61;&#61; &#39;E&#39;: return 0.1017
+    if c &#61;&#61; &#39;t&#39; or c &#61;&#61; &#39;T&#39;: return 0.0737
+    if c &#61;&#61; &#39;a&#39; or c &#61;&#61; &#39;A&#39;: return 0.0661
+    if c &#61;&#61; &#39;o&#39; or c &#61;&#61; &#39;O&#39;: return 0.0610
+    if c &#61;&#61; &#39;i&#39; or c &#61;&#61; &#39;I&#39;: return 0.0562
+    if c &#61;&#61; &#39;n&#39; or c &#61;&#61; &#39;N&#39;: return 0.0557
+    if c &#61;&#61; &#39;h&#39; or c &#61;&#61; &#39;H&#39;: return 0.0542
+    if c &#61;&#61; &#39;s&#39; or c &#61;&#61; &#39;S&#39;: return 0.0508
+    if c &#61;&#61; &#39;r&#39; or c &#61;&#61; &#39;R&#39;: return 0.0458
+    if c &#61;&#61; &#39;d&#39; or c &#61;&#61; &#39;D&#39;: return 0.0369
+    if c &#61;&#61; &#39;l&#39; or c &#61;&#61; &#39;L&#39;: return 0.0325
+    if c &#61;&#61; &#39;u&#39; or c &#61;&#61; &#39;U&#39;: return 0.0228
+    if c &#61;&#61; &#39;m&#39; or c &#61;&#61; &#39;M&#39;: return 0.0205
+    if c &#61;&#61; &#39;c&#39; or c &#61;&#61; &#39;C&#39;: return 0.0192
+    if c &#61;&#61; &#39;w&#39; or c &#61;&#61; &#39;W&#39;: return 0.0190
+    if c &#61;&#61; &#39;f&#39; or c &#61;&#61; &#39;F&#39;: return 0.0175
+    if c &#61;&#61; &#39;y&#39; or c &#61;&#61; &#39;Y&#39;: return 0.0165
+    if c &#61;&#61; &#39;g&#39; or c &#61;&#61; &#39;G&#39;: return 0.0161
+    if c &#61;&#61; &#39;p&#39; or c &#61;&#61; &#39;P&#39;: return 0.0131
+    if c &#61;&#61; &#39;b&#39; or c &#61;&#61; &#39;B&#39;: return 0.0115
+    if c &#61;&#61; &#39;v&#39; or c &#61;&#61; &#39;V&#39;: return 0.0088
+    if c &#61;&#61; &#39;k&#39; or c &#61;&#61; &#39;K&#39;: return 0.0066
+    if c &#61;&#61; &#39;x&#39; or c &#61;&#61; &#39;X&#39;: return 0.0014
+    if c &#61;&#61; &#39;j&#39; or c &#61;&#61; &#39;J&#39;: return 0.0008
+    if c &#61;&#61; &#39;q&#39; or c &#61;&#61; &#39;Q&#39;: return 0.0008
+    if c &#61;&#61; &#39;z&#39; or c &#61;&#61; &#39;Z&#39;: return 0.0005
+    return 1.
+</pre>
+<p />
+<p />
+<strong>Hint</strong>: For <code>decipher</code> you might have your program "look at" all 26 possible rotations of the input string and then decide on which is "best"... .
+<p />
+<p />
+The last python function you will need to write will take three inputs: the action you want to take, the string you are enciphering or deciphering, and a number of characters to shift the message.  This function, <tt>cipher(action, S, n)</tt>, should call your encipher/decipher functions according to the action input it receives.
+<hr />
+<p />
+<h5><a name="Web_Details"></a> Web Details </h5>
+<p />
+<b>HTML Details</b><br />
+The HTML for this page can be fairly simple. Remember to set the onSubmit attributes on your submit buttons to call appropriate javascript functions.
+<p />
+<b>Javascript Details</b><br />
+Your javascript will help make your page interactive (especially when the user mouses over an image) and will also handle making the AJAX calls to your python script. The assignment will be much easier if you split your javascript code into functions with very specific purposes.  Remember that you will have to send different information depending on which radio is selected and which button is clicked.
+<p />
+   <b>AJAX Details</b><br />
+The code to send an AJAX request is as follows:
+<p /> <ul>
+<li> First you must create an xmlhttp request object which will actually do the communicating between javascript and python. This should not be in any function and should only happen once. The    onreadystatechange function dictates what should happen when the xmlhttp object returns a value. When the object enters a ready state indicating that the request has finished and returned correctly, the   below function will replace the innerHTML of an element named 'myDiv' with whatever the output of the python script was.
+</li></ul> 
+<pre>
+   xmlhttp&#61;new XMLHttpRequest();
+   xmlhttp.onreadystatechange&#61;function()
+   {
+   if (xmlhttp.readyState&#61;&#61;4 &#38;&#38; xmlhttp.status&#61;&#61;200)
+   {
+      document.getElementById(&#39;myDiv&#39;).innerHTML&#61;xmlhttp.responseText;
+   }
+   }
+</pre> <ul>
+<li> Sending a request is a two step process: the request must first be opened, and then sent. This code will send a GET request to the script encipher.py and will set the form field S to be 'spam' and n to be 1. The    true indicates that the request should be asynchronous so that javascript doesn't have to wait for this request to continue (although it should not be doing anything else anyway).
+</li></ul> 
+<pre>
+      xmlhttp.open(&#34;GET&#34;,&#34;encipher.py?action&#61;&#39;encipher&#39;&#38;S&#61;&#39;spam&#39;&#38;n&#61;1&#34;,true);
+      xmlhttp.send();
+</pre>
+<p />
+<p />
+You will need to get information from the AJAX request to determine which curtain was clicked on. The syntax for this is identical to the syntax for a regular CGI call. The below code will grab the 'cipher' field and store whatever the choice was in a variable named 'action'.
+<pre>
+   form &#61; cgi.FieldStorage()   # FieldStorage object to hold the form data
+   action &#61; form.getvalue(&#39;cipher&#39;)
+</pre>
+You will want get the string and number of characters to shift by in the same way.  If you are deciphering you should set n=0.  You will then want to pass these to your <tt>encipher.py</tt> script which will run the <tt>cipher</tt> function.
+<p />
+<p />
+<p />
+-- <a href="/twiki/bin/view/Main/BridgetteEichelberger" class="twikiLink">BridgetteEichelberger</a> - 07 Jun 2011<a name="bottom"></a>
+</div>
+<p />
+<div class="footer">
+<p />
+</div>
+<p />
+</body>
+</html>
