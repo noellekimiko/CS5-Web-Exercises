@@ -344,17 +344,116 @@ directory:
 <p />
 You can ensure that its permissions will be correct with <tt>chmod 644 input.html</tt>.
 <p />
-Then, load that file - whichever of the three you select and submit should be welcomed with the usual, personalized message... .
+Then, load that file in your server. If you use it now, whichever of the three options you select and submit should result in the usual personalized message.
+
 <p />
 
+Let's break this code down. 
+<ul>
+<li> The start of the form is the line:
+<pre>
+&#60;form name&#61;&#34;input&#34; action&#61;&#34;cgi-bin/test.py&#34; method&#61;&#34;get&#34;&#62;
+</pre>
+The <tt>action</tt> attribute tells the page what script to run after the form is submitted. In this case, it is the <tt>test.py</tt> file in the <code>cgi-bin</code> folder that we have been using.
+</li> </ul> 
+<p /> <ul>
+<li> The code <tt>input type&#61;&#34;radio&#34;</tt> sets the input to be radio buttons. Radio buttons (<input type="radio">) are buttons that allow for only one to be selected at a time. Other possible input types are described at <a href="http://www.w3schools.com/html/html_forms.asp" target="_top">http://www.w3schools.com/html/html_forms.asp</a>.
+</li></ul> 
+<p /> <ul>
+<li> The <tt>name</tt> attribute of each radio button provides a way for us to identify these sections. Later, to extract the data from this form, you will need to find the data using this same name.Also, it is important that all the buttons have the same string for <tt>name</tt>. When you select a button with a given name, all of the other buttons with the same name will be deselected, which is what we want to play rock paper scissors.
+</li> </ul> 
+<p /> <ul>
+<li> The <tt>value</tt> attribute sets the value or data that will be assigned to the radio button. That is, when you submit, it will send the value of whatever button you chose. In this case, our values will be "rock", "paper", and "scissors".
+</li> </ul> 
+<p /> <ul>
+<li> The text that will be displayed next to the radio button comes directly after the <tt>input</tt> tag ends.
+</li> </ul> 
+<p /> <ul>
+<li> The <tt>&#60;br /&#62;</tt> tag inserts a line break, moving the other items on the page to the line under it.
+</li> </ul> 
+<p /> <ul>
+<li> The code <tt>&#60;input type&#61;&#34;submit&#34; value&#61;&#34;Submit&#34;&#62;</tt> creates the button that will send your input to the result page. The words displayed on the actual button will be whatever is assigned to the <tt>value</tt> attribite, in this case "Submit".
+</li>
+</ul> 
+<p />
 <h3><a name="Keep_going"></a><a name="Keep_going_"></a> Keep going... </h3>
 <p />
-Next, you'll want to finish by changing the <tt>test.py</tt> script so that it plays rock-paper-scissors. 
+Next, you'll want to finish by changing the <tt>test.py</tt> script so that it plays rock-paper-scissors. It may be helpful to put your actual rock-paper-scissors code in a separate file and then call it from inside <tt>test.py</tt>. (Remember to make it public with <tt>chmod</tt> if you do this!)
 <p />
 It's Python, so you should be set -- good luck!
 <p />
-<br>
+
+<h5>Hints</h5>
+
+These lines might be helpful to add to <tt>test.py</tt>:
+<pre>
+import RPS
+
+form &#61; cgi.FieldStorage()
+userChoice &#61; form[&#34;name&#34;].value
+outcome &#61; RPS.RPS(userChoice)
+compchoice &#61; outcome&#91;1]
+result &#61; outcome&#91;2]
+
+</pre>
 <p />
+Let's look at why we have these new lines of code:
+<p /> <ul>
+<li> The <tt>import RPS</tt> line will import the file containing your rock-paper-scissors function, in this case named <tt>RPS.py</tt> (but use whatever name you've given to that file). It should be in the same folder as your current file. 
+</li></ul> 
+<p /> <ul>
+<li> The line <tt> form &#61; cgi.FieldStorage()</tt> gets the form data from your previous page, and saves it as a variable named <code>form</code>. 
+</li></ul> 
+<p /> <ul>
+<li> Remember the name we assigned to our radio buttons? Using <tt>form[&#34;name&#34;].value</tt>, we can find the data submitted in the form which will end up being the string we submitted: <tt>rock</tt>, <tt>paper</tt>, or <tt>scissors</tt>. We can assign this string to <tt>userChoice</tt> and then use this value inside our <tt>RPS</tt> function to get the result of a game of Rock-Paper-Scissors with a randomized computer.
+</li></ul> 
+<p /> <ul>
+<li> We save the <tt>outcome</tt> of the game to be a list of strings: our move, the computer's move, and the game's winner.
+</li></ul> 
+<p /> <ul>
+<li> The second string in the outcome list should be the computer's move, so we can assign it (<code>outcome[1]</code>) to the variable <code>compchoice</code>.
+</li></ul> 
+<p /> <ul>
+<li> The third string in the outcome list should be the string stating whether the user won, lost, or tied the game, so we can assign it (<code>outcome[2]</code>) to the variable <code>result</code>.
+</li></ul> 
+<p />
+If you use this code, you will need to write <tt>RPS.py</tt> that contains the <tt>RPS</tt> function. Here's a docstring to get you started:
+<pre>
+def RPS ( userChoice ):
+  &#34;&#34;&#34;
+  input: a string representing the user's choice 
+  output: a list of strings in the format [userChoice, computerChoice, result]
+  &#34;&#34;&#34;
+
+</pre> 
+
+You might have some code from homework that will just need a few adaptations to correctly run a game of rock-paper-scissors.
+<p />
+You will still need to write code to get this information onto the result page. Remember your <tt>print</tt> statements!
+<p />
+
+<h3><a name="Finishing_Up"></a><a name="Finishing_Up"></a> Finishing Up</h3>
+
+If your game of rock paper scissors works with the radio buttons there is one last step: styling with CSS! Add a few rules to a file named <tt>stylesheet.css</tt> that will modify the appearance of your form, link it to <tt>input.html</tt>, and make sure it's public with <tt>chmod</tt>.
+<p />
+<h5>Submission</h5>
+
+
+For this assignment, you should submit all of your source files:
+<ul>
+<li> <tt>input.html</tt> </li>
+<li> <tt>test.py</tt> </li>
+<li> <tt>RPS.py</tt> (if you used a separate file) </li>
+<li> <tt>stylesheet.css</tt> </li>
+</ul> 
+
+Also submit two screenshots: 
+<ul>
+<li> <tt>lab3img1.png</tt>: a screenshot of your <tt>input.html</tt> page with the form to select an element.</li> 
+<li> <tt>lab3img2.png</tt>: a screenshot of the result page </li>
+</ul> 
+
+
 <p /><a name="bottom"></a>
 </div>
 <p />
