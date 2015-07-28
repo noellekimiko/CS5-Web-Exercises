@@ -48,7 +48,7 @@
   <a class="twikiLink" href="/twiki/bin/view/CS5/WebHome">CS5 Web</a> &gt; <a href="/twiki/bin/view/CS5/WebCS5DevelopmentPage" class="twikiLink">WebCS5DevelopmentPage</a> &gt;
   <a class="twikiLink" href="/twiki/bin/view/CS5/WebExCr2011Lab4">WebExCr2011Lab4</a>
   <div style="margin-bottom: 6px;">
-	 <b>Next HW</b>: &nbsp;&nbsp; <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!--and <a href="/twiki/bin/view/CS5/Homework8Gold" class="twikiLink">HW 8</a></b>--> <!-- <b><a class="twikiLink" href="/twiki/bin/view/CS5/Homework12Gold">Milestone/hw12</a></b> &nbsp;&nbsp; <b><a href="/twiki/bin/view/CS5/Homework12Black" class="twikiLink">Milestone/hw12</a></b> --> <!-- <b><a href="/twiki/bin/view/CS5/Homework11Gold" class="twikiLink">Gold HW 11</a></b>      Homework12Gold  <a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">ProjectsPage</a>  -->  &nbsp;&nbsp; will be due on: <font color="darkgreen"><b>Sun., May 3, 11:59pm</b></font> <br>
+	 <b>Next HW</b>: &nbsp;&nbsp; <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!--and <a href="/twiki/bin/view/CS5/Homework8Gold" class="twikiLink">HW 8</a></b>--> <!-- <b><a class="twikiLink" href="/twikRemember that testing your python functions before you move on to the rest of the assignment is always a good idea. You might want to check independently that encipher is working and also that the final script prints out the HTML that you think it will.i/bin/view/CS5/Homework12Gold">Milestone/hw12</a></b> &nbsp;&nbsp; <b><a href="/twiki/bin/view/CS5/Homework12Black" class="twikiLink">Milestone/hw12</a></b> --> <!-- <b><a href="/twiki/bin/view/CS5/Homework11Gold" class="twikiLink">Gold HW 11</a></b>      Homework12Gold  <a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">ProjectsPage</a>  -->  &nbsp;&nbsp; will be due on: <font color="darkgreen"><b>Sun., May 3, 11:59pm</b></font> <br>
 	 Next Lab: <b><a class="twikiLink" href="/twiki/bin/view/CS5/ProjectsPage">Final projects</a></b> <!-- <b><a href="/twiki/bin/view/CS5/Lab11" class="twikiLink">Lab 11: vPython!</a></b>   <b><a href="/twiki/bin/view/CS5/Homework12Gold" class="twikiLink">Open lab: FSMs, ExCr, or projects</a></b>    --> &nbsp;&nbsp; will be held on: Mon. April 27 or Tue. April 28 <br>
 	 Submissions: <a href="http://www.cs.hmc.edu/submit">CS submission site</a>
   </div>
@@ -96,7 +96,7 @@ You can write <code>encipher</code> any way you like, using functional programmi
 It's up to you how you do this! (Remember that uppercase letters wrap around the alphabet to uppercase letters, and
 lowercase letters wrap always to lowercase letters.)
 <p />
-Remember that testing your python functions before you move on to the rest of the assignment is always a good idea. You might want to check independently that encipher is working and also that the final script prints out the Trash.CS5HTML that you think it will.
+Remember that testing your python functions before you move on to the rest of the assignment is always a good idea. You might want to check independently that encipher is working and also that the final script prints out the HTML that you think it will.
 <p />
 <p />
 As a reminder, the built-in functions <code>ord</code> and <code>chr</code> convert from single-character strings to integers and back.
@@ -125,7 +125,7 @@ Some encipher examples:
 <p />
 In the previous lab we handled form data by calling a python script which would create a new HTML page.  However, if we simply want to change a small portion of a page it becomes infeasible to send information back to the server and change a detail and recreate the rest of the page.  This is where JavaScript comes in handy. JavaScript allows for these changes to be made on the user's end.  For this lab we will handle our form data using JavaScript and return the result to the page.
 <p />
-You will need to include the following script tags in your document.  They can be placed in the head, body or you could use an external JavaScript file.  For now I recommend putting them right before the end of the body.
+Create an HTML document named <tt>caesarcipher.html</tt>. Include the following script tags in this document.  They can be placed in the head, body or you could use an external JavaScript file.  For now I recommend putting them right before the end of the body.
 <pre>
 &#60;script type&#61;&#34;text/!JavaScript&#34;&#62;
 ... some !JavaScript code ...
@@ -134,6 +134,9 @@ You will need to include the following script tags in your document.  They can b
 These script tags will be where you will put all of your JavaScript code.
 <p />
 <h4><a name="JavaScript_Syntax"></a><a name="_JavaScript_Syntax"></a> JavaScript Syntax </h4> <ul>
+<li> Line endings: regular lines (meaning a line of code that is not right before opening a block) have to have a semicolon at the end. Take care to add these in when converting your python code.
+</li> </ul> 
+<p /> <ul>
 <li> Functions      <pre>
 function encipher( str, shift )
 {
@@ -175,13 +178,33 @@ document.getElementById(&#39;spam&#39;);
 </pre>      Where <tt>checkForm()</tt> is the function you want to bind to the onSubmit event and is already written within your script tags.
 </li></ul> 
 <p />
-So, you will convert your python function that enciphers a phrase to JavaScript. Then using HTML, you will create the webpage interface, and with the code directly above, call your function.
+With this syntax in mind, convert your python <tt>encipher</tt> code to JavaScript. Then create the webpage interface with HTML, and call your function with the code directly above.
 <p />
 <p />
 For more event information check out <a href="http://www.w3schools.com/js/js_events.asp" >w3schools JavaScript Events</a>.
 <p />
 For more JavaScript information check out <a href="http://www.w3schools.com/js/default.asp" >w3schools JavaScript Tutorial</a>.
 <p />
+
+<h3><a name="Finishing_Up"></a><a name="Finishing_Up"></a> Finishing Up</h3>
+
+If your cipher application works, the last step is to add CSS styling. Add a few rules to a file named <tt>ccstylesheet.css</tt> that will modify the appearance of your form and link it to your page.
+<p />
+<h5>Submission</h5>
+
+
+For this assignment, you should submit all of your source files:
+<ul>
+<li> <tt>caesarcipher.html</tt> </li>
+<li> <tt>ccstylesheet.css</tt> </li>
+</ul> 
+
+Also submit two screenshots: 
+<ul>
+<li> <tt>lab4img1.png</tt>: a screenshot of your <tt>caesarcipher.hmtl</tt> page </li> 
+<li> <tt>lab4img2.png</tt>: a screenshot of the result of running the cipher </li>
+</ul> 
+
 -- <a class="twikiLink" href="/twiki/bin/view/Main/BridgetteEichelberger">BridgetteEichelberger</a> - 06 Jun 2011<a name="bottom"></a>
 </div>
 <p />
