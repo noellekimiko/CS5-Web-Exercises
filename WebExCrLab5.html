@@ -56,32 +56,27 @@
 <p />
 <div class="main">
 <a name="text"></a><h3><a name="Extra_Credit_Lab_5_File_Upload_a"></a> Extra Credit Lab 5: File Upload and Analysis </h3>
-Your goal in this assignment is to create a small web application that uploads and analyzes a file of text. For this week, you may assume that the file is, in fact, an ASCII text file.
-<hr />
+Your goal in this assignment is to create a small web application that takes in an uploaded text file and analyzes it. For this week, you may assume that the file is, in fact, an ASCII text file.
+
+<h3><a name="File_Statistics"></a> File Statistics </h3>
+
 <strong>To Do:</strong> Implement a web application that uses <ul>
 <li> HTML + CSS
 </li> <li> CGI
 </li></ul> 
 and allows an end user to upload a file and receive statistics about that file.
-<hr />
-<h5><a name="Example_Interface"></a> Example Interface </h5>
+<p />
+Here is an example of what your interface might look like: <br />
+
 <img src="http://www.cs.hmc.edu/~paelionmoss/upload1.png" alt="upload1.png" />
 <p />
-<br />
-<p />
-Note that the file has 4 lines because the last line is just a plain newline. <br>
-<img src="http://www.cs.hmc.edu/~paelionmoss/upload2.png" alt="upload2.png" />
-<p />
-<br /><hr />
+<img src="http://www.cs.hmc.edu/~paelionmoss/upload2.png" alt="upload2.png" /> <br>
+Note that the file has 4 lines because the last line is just a plain newline. 
 <p />
 <h5><a name="HTML_Details"></a> HTML Details </h5>
-In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use CGI to allow your front page to call the python script you have written. This is also an opportunity to learn how to upload and save files using HTML and CGI. The HTML for your front page can be extremely brief. If it's getting too complicated you may need to step back and rethink your design. <ul>
-<li> A good reference for file upload can be found at <a href="http://webpython.codepoint.net/cgi_file_upload" target="_top">http://webpython.codepoint.net/cgi_file_upload</a>.
-</li> <li> Remember that the easiest way to use CGI is with the action attribute of a form.
-</li> <li> The second page will be HTML printed by your Python script.
-</li> <li> As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
-</li></ul> 
-Here is the HTML for your front page. It will look identical to the example. You should change the link of the CSS file to link to your own favorite style sheet.
+In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use CGI to allow your front page to call the python script you have written. This is also an opportunity to learn how to upload and save files using HTML and CGI. 
+<p />
+Here is the HTML for the front page; it will look identical to the example. The second page will be HTML printed by your Python script. You should change the <tt>link</tt> tag to use your own favorite CSS style sheet.
 <pre>
 &#60;html&#62;
 &#60;head&#62;
@@ -97,23 +92,47 @@ Here is the HTML for your front page. It will look identical to the example. You
 &#60;/body&#62;
 &#60;/html&#62;
 </pre>
-Note that the python script that this code calls is named upload.py.
+Note that the python script that this code calls in the the <tt>action</tt> attribute of the <tt>form</tt> is named <tt>upload.py</tt>.This is the easiest way to use CGI.
 <p />
-<h5><a name="Python_Details"></a> Python Details </h5> <ul>
+As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
+<p />
+
+<h5><a name="Python_Details"></a> Python Details </h5>
+Write code inside of <tt>upload.py</tt> to upload the file and analyze its contents.
+<ul>
+<li> <strong>Don't forget</strong> to have
+<ul>
+<li> <code>#!C:/Python27/python.exe</code> for Windows users, or </li>
+<li> <code>#!/usr/local/bin/python</code> for Mac users</li>
+</ul> 
+as the first line of your python file. This allows your python scripts to run in CGI.
+</li> </ul>
+
+<ul>
 <li> <strong>Don't forget</strong> to have      <pre>
-   import cgi
-   import sys # Notice this is new. This allows your python script to abort.
-   import os # Notice this is new. It is used to deal with the filenames.
-   import cgitb; cgitb.enable()
-</pre>      at the top of your python file.
-</li> <li> <strong>Don't forget</strong> that your script's output must start with 
-</li></ul> 
+import cgi
+import sys
+import os
+import cgitb; cgitb.enable()
+</pre>      after the first line, at the top of your python file.
+<ul>
+<li> The <tt>cgi</tt> module allows you to access the data from the form you will use to call the python script. </li> 
+<li> The <tt>sys</tt> module allows your python script to abort.</li>
+<li> The <tt>os</tt> module helps handle the filenames.</li>
+<li> The <tt>cgitb</tt> module will allow python error output to be displayed on your web browser if something goes wrong. It is very helpful for troubleshooting.</li>
+</ul> 
+
+</li> </ul>
+<ul>
+<li> <strong>Don't forget</strong> that your script's output must start with 
 <pre>
-   print &#34;Content-Type: text/html; charset&#61;ISO-8859-1\n\n&#34;
-   print
+print &#34;Content-Type: text/html; charset&#61;ISO-8859-1\n\n&#34;
+print
 </pre>
+</li></ul> 
 <h5><a name="Handling_File_Upload"></a> Handling File Upload </h5>
-Below is CGI code to save the uploaded file.
+
+Below is CGI code to save the uploaded file. If you need more information, a good reference for file upload can be found at <a href="http://webpython.codepoint.net/cgi_file_upload" target="_top">http://webpython.codepoint.net/cgi_file_upload</a>.
 <p />
 <b>Code to save uploaded file:</b>
 <pre>
@@ -132,50 +151,36 @@ else:
 This will save the uploaded file into a new directory named <code>files</code>, which is located in the same directory as your <code>upload.py</code> file. The <code>files</code> directory <strong>must</strong> already exist otherwise this script will not work. Alternatively, you could just not put the uploaded files into a subdirectory if you would like by changing the <code>open</code> line to <code>open(fn, 'wb').write(fileitem.file.read())</code>.
 <p />
 <p />
-<b>The analysis: part 1</b><br />
-You will need to make an application that
+
+<h5><a name="Anaylis_Part_1"></a> Analysis: Part 1</h5>
+
+<strong>Note:</strong> For the analysis functions, we would like you to do your debugging by first making sure your program works from the Python shell before implementing it in CGI.
+<p />
+
+Your python script will need to:
 <p /> <ul>
-<li> counts all of the words in the file
-</li> <li> counts all of the lines in the file
-</li> <li> counts all of the characters in the file
+<li> count all of the words in the file
+</li> <li> count all of the lines in the file
+</li> <li> count all of the characters in the file
 </li></ul> 
 <p />
 Then, print out those three numbers at the top of your output page.
 <p />
 Be sure to try this out with one or two small files -- and check that the answers are correct!
 <p />
-Details like... should we count blank characters (spaces, newlines)? are up to you to decide -- any consistent approach is OK. For example, in the interface above, space characters and newline characters are counted. In fact, there is a blank line at the end of the file, which is why it reports four lines instead of 3.
-<br /><b>The analysis: part 2</b><br />
-For the second part of this project, keep the existing text of the file and, below it, add a list of words from the file - and their frequencies.
+Details such as counting blank characters (spaces, newlines) are up to you to decide. Any consistent approach is acceptable. For example, in the interface above, space characters and newline characters are counted. In fact, there is a blank line at the end of the file, which is why it reports four lines instead of three.
+
+<h5><a name="Anaylis_Part_2"></a> Analysis: Part 2</h5>
+
+For the second part of this project, add a list of words from the file and their frequencies below the information from part 1.
 <p />
 For full credit, you should output the words in decreasing order of frequency, so that the most common appearing word is first, the second most common word is second, and so on.
 Most credit (80%) is available for a result that has all of the words in any order at all. 
 <p />
-<hr />
+
+<!-- <h3><a name="Syllable_Counting"></a> Syllable Counting </h3>
 <p />
-<strong>Note:</strong> For these functions, we would like you to do your debugging by first making sure your program works from the Python shell before implementing it in CGI.
-<p />
-<strong>'Nother Note:</strong> Aside from the other additional lines which need to be added to your Python scripts in order that they run in CGI, do not forget that the <em>top</em> line of each Python script will look similar to:
-<ul>
-<li> <code>#!C:/Python27/python.exe</code> for Windows users, or </li>
-<li> <code>#!/usr/local/bin/python</code> for Mac users</li>
-</ul>
-<p />
-<strong>Not the Last Note:</strong> Make sure that before you start printing your HTML page you add the following code to your script:
-<pre>   print &#34;Content-Type: text/html; charset&#61;ISO-8859-1\n\n&#34;
-   print </pre>
-<p />
-<strong>Last Note:</strong> Lastly, remember to include the lines: 
-<pre>   import cgi
-   import cgitb; cgitb.enable() </pre> <ul>
-<li> The cgi module allows you to access the data from the form you will use to call the python script.
-</li> <li> The cgitb module will allow python error output to be displayed on your web browser if something goes wrong. It is very helpful for troubleshooting.
-</li></ul> 
-<p />
-<p />
-<h3><a name="Syllable_Counting"></a> Syllable Counting </h3>
-<p />
-Your <code>syllables( word )</code> function need only count syllables in words containing only capital or lowercase letters. When writing your code that counts syllables in a word, you should assume: <ul>
+One type of analysis that can be performed is at the word level: a syllable counter. Your <code>syllables( word )</code> function need only count syllables in words containing only capital or lowercase letters. When writing your code that counts syllables in a word, you should assume: <ul>
 <li> A vowel is a capital or lowercase a, e, i, o, u, or y.
 </li> <li> A syllable occurs in a given word whenever: <ul>
 <li> Rule 1: a vowel is at the start of a word
@@ -205,7 +210,23 @@ An example of how your interface might look:
 <img src="https://www.cs.hmc.edu/~sjohnson/SyllableCounting/Picture 2.png">
 <p />
 But, as always, this is merely an example of what your interface <em>may</em> look like. Creativity is absolutely encouraged, and certainly preferred.
-<p />
+<p /> -->
+
+<h3><a name="Submission"></a>Submission</h3>
+
+For this assignment, you should submit all of your source files:
+<ul>
+<li> The <tt>html</tt> front page </li>
+<li> Your custom <tt>css</tt> stylesheet </li>
+<li> <tt>upload.py</tt> </li>
+</ul> 
+
+Also submit two screenshots: 
+<ul>
+<li> <tt>lab5img1.png</tt>: a screenshot of your front <tt>html</tt> page where users upload files.</li> 
+<li> <tt>lab5img2.png</tt>: a screenshot of the result page.</li>
+</ul> 
+
 <p />
 -- <a class="twikiLink" href="/twiki/bin/view/Main/SarahJohnson">SarahJohnson</a> - 08 Jun 2010
 <p />
