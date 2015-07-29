@@ -144,11 +144,11 @@ Clicking on the "Hide" button will hide all of the text with a <tt>p</tt> tag, s
 <p />
 Notice that in the paragraph tags for the first and second lines, we have specified the class and id for each paragraph. <pre>p class&#61;&#34;frost&#34; id&#61;&#34;one&#34;</pre> The class for this paragraph is frost and the id is one. Classes can be used to specify different objects, and objects in one class can have many different ids. We can make JQuery target specific classes or ids by changing the text inside the parentheses before the function call.
 <p />
-To target a specific class, replace the target with a period followed by the class name, eg., <tt>.para</tt>.
+To target a specific class, replace the target with a period followed by the class name, eg., <tt>.frost</tt>.
 To target a specific id, replace the target text with a pound sign followed by the id, eg., <tt>#one</tt>.
 <p />
-To hide something initially, you will have to include the following line after the (document).ready(function(), which starts when the page loads:
-<pre>$(&#39;&#60;b&#62;something&#60;/b&#62;&#39;).hide();</pre>
+To hide something initially, you will have to include the following line after the (document).ready(function()), which starts when the page loads:
+<pre>$(&#39;something&#39;).hide();</pre>
 <p />
 Another function that might be useful is toggle(), which allows you to use the same button for hide and show- when the text is visible, toggle hides it, and when it is hidden, toggle shows it.
 <p />
