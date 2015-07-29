@@ -82,6 +82,30 @@ and allows an end user to specify a message to encrypt and how far to shift it b
 In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use JavaScript to allow your front page to call the functions you have written. <ul>
 <li> As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
 </li></ul> 
+
+<p />
+<h5><a name="HTML_Details"></a> HTML Details </h5>
+Here some HTML to get you started. Put this code into a file named <tt>caesarcipher.html</tt>.
+<pre>
+&#60;html&#62;
+&#60;head&#62;&#60;/head&#62;
+&#60;body&#62;
+
+&#60;form name&#61;&#34;myForm&#34; method&#61;&#34;get&#34; action&#61;&#34;&#34; onsubmit&#61;&#34;return encipher()&#34;&#62;
+  Message: &#60;input type&#61;&#34;text&#34; name&#61;&#34;toEncipher&#34;&#62; &#60;br /&#62;
+  Shift Value: &#60;input type&#61;&#34;text&#34; name&#61;&#34;shiftVal&#34;&#62; &#60;br /&#62;
+  &#60;input type&#61;&#34;submit&#34; value&#61;&#34;Submit&#34;&#62;
+&#60;/form&#62;
+
+&#60;p id="result"&#62; &#60;/p&#62;
+
+&#60;/body&#62;
+&#60;/html&#62;
+</pre>
+Notice the <tt>onsubmit</tt> attribute of the form. This is a Javascript event that will be explained later in this lab. Remember the <tt>name</tt> attributes of the <tt>form</tt> and of the <tt>input</tt> elements as well. These will help you find the information later.
+<p />
+Also, the paragraph at the bottom with the <tt>id="result"</tt> is where your result will eventually be placed. To start, it has no content and appears blank.
+<p />
 <p />
 <h5><a name="Python_Details"></a> Python Details </h5>
 <p />
@@ -127,8 +151,8 @@ In the previous lab we handled form data by calling a python script which would 
 <p />
 Create an HTML document named <tt>caesarcipher.html</tt>. Include the following script tags in this document.  They can be placed in the head, body or you could use an external JavaScript file.  For now I recommend putting them right before the end of the body.
 <pre>
-&#60;script type&#61;&#34;text/!JavaScript&#34;&#62;
-... some !JavaScript code ...
+&#60;script &#62;
+... some JavaScript code ...
 &#60;/script&#62;
 </pre>
 These script tags will be where you will put all of your JavaScript code.
@@ -138,12 +162,15 @@ These script tags will be where you will put all of your JavaScript code.
 </li> </ul> 
 <p /> <ul>
 <li> Functions      <pre>
-function encipher( str, shift )
+function encipher()
 {
 ...
 }
       </pre>
-</li> <li> If/Else      <pre>
+Notice that we have removed the arguments from the <tt>encipher</tt> function. You should use <tt>id</tt> or <tt>name</tt> attributes when creating the <tt>input</tt> elements of your form. Then, you will get the information from these elements inside of <tt>encipher</tt> (more on this later).
+</li> </ul> 
+<p /> <ul>
+<li> If/Else      <pre>
 if (condition)
 {
  code to be executed if condition is true
@@ -167,15 +194,22 @@ for (var i&#61;0; i&#60;5; i++)
   document.write(&#34;&#60;br /&#62;&#34;);
 }
 </pre>
-</li> <li> Getting Elements<br>     When using JavaScript you can refer to specific elements of the HTML in order to make changes.  For this to work you must first make sure your HTML tag for the element has an id.  It is important to note that ids are unique and two elements on the page should not have the same id.  To add an id to an element you can simple include <tt>id="spam"</tt> within the open tag for the element you want to be called spam.  Then to access this element in JavaScript you can use the following line.     <pre>
-document.getElementById(&#39;spam&#39;);
-</pre>      You will then have the ability to modify parts of the element using methods like <tt>.innerHTML</tt> or <tt>.src</tt>.
+</li> <li> Getting Elements<br>     When using JavaScript you can refer to specific elements of the HTML in order to make changes.  For this to work you must first make sure your HTML tag for the element has an id.  It is important to note that ids are unique and two elements on the page should not have the same id.  For instance, take our paragraph with the <tt>id="result"</tt> from before.  Then to access this element in JavaScript you can use the following line.     <pre>
+document.getElementById(&#39;result&#39;);
+</pre>      You will then have the ability to modify parts of the element using methods like <tt>.innerHTML</tt> or <tt>.src</tt>. This will be useful in getting the information out of your form 
 </li></ul> 
-<p />
+<p /> <ul>
+<li> Getting Form Information <br /> You can reference information that was submitted in the form using the <tt>name</tt> attributes. If you used the HMTL form provided, these two lines will be:
+<pre>
+var toEncipher = document.forms["myForm"]["toEncipher"].value;
+var shiftStr = document.forms["myForm"]["shiftVal"].value;
+</pre>
+This code will be useful inside of <tt>encipher()</tt>. It is important to note that these values are both strings by default. Make sure to convert the shift value to an integer! (Try the <tt>parseInt</tt> command.) Otherwise, the shift value it will be treated as a string and can cause unexpected results.
+</li></ul> 
 <p /> <ul>
 <li> Events<br>      Another import part of JavaScript that you will need to know are events.  Events allow you bind some action with a function.  Some examples of events are, keystrokes, a mouse click, a mouse over or submitting a form.  This last one will mostly likely be the one you want to use.      For this you will want your form tag to look something like this:      <pre>
-&#60;form method&#61;&#34;post&#34; action&#61;&#34;&#42;xxx&#42;.htm&#34; onsubmit&#61;&#34;checkForm()&#34;&#62;
-</pre>      Where <tt>checkForm()</tt> is the function you want to bind to the onSubmit event and is already written within your script tags.
+&#60;form name&#61;&#34;myForm&#34; method&#61;&#34;get&#34; action&#61;&#34;&#34; onsubmit&#61;&#34;return encipher()&#34;&#62;
+</pre>      Where <tt>encipher()</tt> is the function you want to bind to the onsubmit event and is already written within your script tags. When writing <tt>encipher()</tt>, make sure that it has the line <tt>return false;</tt> at the very end; this will prevent the page from reloading once the script runs.
 </li></ul> 
 <p />
 With this syntax in mind, convert your python <tt>encipher</tt> code to JavaScript. Then create the webpage interface with HTML, and call your function with the code directly above.
