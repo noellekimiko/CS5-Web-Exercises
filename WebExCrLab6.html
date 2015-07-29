@@ -57,7 +57,7 @@
 <div class="main">
 <a name="text"></a><h3><a name="Extra_Credit_Lab_6_AJAX_and_The"></a><a name="Extra_Credit_Lab_6_AJAX_and_The_"></a> Extra Credit Lab 6: AJAX and The Caesar Cipher Part II </h3>
 <p />
-For this problem you will extend the caesar enciphering page that you wrote last week. You should have already written a python function to decipher a message encrypted using a caesar cipher. You will need to integrate the enciphering and deciphering capabilities into a single front end web application.
+For this problem you will extend the caesar enciphering page that you wrote last week. However, instead of a Javascript function, we will go back to the python version. You should have already written a python function to decipher a message encrypted using a caesar cipher in your homework. You will need to integrate the enciphering and deciphering capabilities into a single front end web application.
 <p />
 <hr />
 <strong>To Do:</strong> Implement a web application that uses <ul>
@@ -78,14 +78,23 @@ and allows an end user to select either enciphering or deciphering capability us
 <hr />
 <p />
 <h5><a name="Web_Details"></a> Web Details </h5>
-In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use AJAX to allow your front page to call the python script you have written. Your front page should only ever call one script. The information in the radio buttons should tell the script which action to take and it should adjust appropriately. <ul>
+In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use AJAX to allow your front page to call the python script you have written. Your front page should only ever call one script. The results page should be HTML code printed by your script. The information in the radio buttons should tell the script which action to take and it should adjust appropriately. 
+<ul>
 <li> <strong>Don't forget</strong> to have
-</li></ul> 
+<ul>
+<li> <code>#!C:/Python27/python.exe</code> for Windows users, or </li>
+<li> <code>#!/usr/local/bin/python</code> for Mac users</li>
+</ul> 
+as the first line of your python file.
+</li> </ul>
+<ul>
+<li> <strong>Don't forget</strong> to have
 <pre> 
-    import cgi
-    import cgitb; cgitb.enable()
+import cgi
+import cgitb; cgitb.enable()
 </pre>
-   at the top of your python file.
+   at the top of your python file after that first line.
+</li></ul> 
 <!-- <ul>
 <li> <strong>Don't forget</strong> that your script's output must start with 
 </li></ul> 
@@ -93,15 +102,14 @@ In this assignment we would like you to use HTML + CSS to construct the pages an
     print &#34;Content-Type: text/html; charset&#61;ISO-8859-1\n\n&#34;
     print
 </pre>
---> <ul>
-<li> As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
-</li></ul> 
+--> 
+As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
 <p />
 <h5><a name="Python_Details"></a> Python Details </h5>
 <p />
 <code>decipher</code> will be given a string of English text shifted by some amount already; <code>decipher</code> should return the original English string, to the best of its ability. Note: some strings have more than one English "deciphering." What's more, it is very difficult to handle short strings correctly. Thus, your <code>decipher</code> does not have to be perfect.
 <p>
-One approach you could try is to use letter frequencies -- a function is provided at the bottom of this page; feel free to cut-and-paste it into your HW file. Scrabble scores have also been suggested in the past...! You might want also to use some additional "heuristics" (rules of thumb) of your own design.  Also, you are welcome to write one or more small "helper" functions that will help <code>decipher</code>. <strong>Be sure</strong> to describe whatever strategies you used in writing your <code>decipher</code> function in a detailed comment above your <code>decipher</code> function. 
+One approach you could try is to use letter frequencies -- a function is provided at the bottom of this page; feel free to cut-and-paste it into your file. Scrabble scores have also been suggested in the past...! You might want also to use some additional "heuristics" (rules of thumb) of your own design.  Also, you are welcome to write one or more small "helper" functions that will help <code>decipher</code>. <strong>Be sure</strong> to describe whatever strategies you used in writing your <code>decipher</code> function in a detailed comment above your <code>decipher</code> function. 
 <p />
 <p />
 As a reminder, the built-in functions <code>ord</code> and <code>chr</code> convert from single-character strings to integers and back.
@@ -200,7 +208,7 @@ The code to send an AJAX request is as follows:
 </pre>
 <p />
 <p />
-You will need to get information from the AJAX request to determine which curtain was clicked on. The syntax for this is identical to the syntax for a regular CGI call. The below code will grab the 'cipher' field and store whatever the choice was in a variable named 'action'.
+You will need to get information from the AJAX request to determine which option was clicked. The syntax for this is identical to the syntax for a regular CGI call. The below code will grab the 'cipher' field and store whatever the choice was in a variable named 'action'.
 <pre>
    form &#61; cgi.FieldStorage()   # FieldStorage object to hold the form data
    action &#61; form.getvalue(&#39;cipher&#39;)
