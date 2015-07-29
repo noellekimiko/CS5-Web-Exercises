@@ -99,7 +99,7 @@ As always, make sure that your files have appropriate permissions to let the web
 <li> Another thing you will need is a means to send the input information from the index html document (first image, above) to your python script. You can do this with the form tag, as follows       <pre>&#60;form enctype&#61;&#34;multipart/form-data&#34; action&#61;&#34;cgi-bin/YOURPYTHONSCRIPT.py&#34; method&#61;&#34;post&#34;&#62;</pre>           You should save all of your .html files in the web directory, since the Python CGI server automatically tries to run all files in cgi-bin as scripts (whether they are or not). This is why you need to run the server from your web directory and specify cgi-bin/YOURPYTHONSCRIPT.py.
 </li></ul> 
 <p /> <ul>
-<li> One thing to consider is the body <code>onload</code> attribute. This allows you to call a javascript function (perhaps to load a card using <tt>initialize()</tt> ) as soon as the HTML of the page is loaded.
+<li> One thing to consider is the <code>onload</code> attribute that you can add to the <tt>body</tt> element. This allows you to call a javascript function (perhaps to load a card using <tt>initialize()</tt> ) as soon as the HTML of the page is loaded.
 </li></ul> 
 <p />
 <p />
@@ -142,9 +142,9 @@ All you will need to do in the javascript of the second page is to use AJAX to o
    form &#61; cgi.FieldStorage()
 </pre>
 <p /> <ul>
-<li> Notice that you will still need to grab the answer field of the form and then you will need to append everything to your file. You can grab the input of text boxes in your html document using <tt>form.getvalue( <b>VALUE</b> )</tt>.
-</li> <li> The open(filename, mode) command will allow you to open a file. In this case, since you want to append to the file, the mode should be 'a'.  For example, <pre>f &#61; open(&#39;flash.txt&#39;, &#39;a&#39;)</pre>
-</li> <li> After the file is open, you can use the command <tt>f.write(TEXT)</tt> to write the question, separating string, and answer to your database file. If you don't want everything on one line, then you will need to include '\n', the newline character.
+<li> Notice that you will still need to grab the answer field of the form and then you will need to append everything to your file. You can grab the input of text boxes in your html document using <tt>form.getvalue( <b>inputName</b> )</tt>.
+</li> <li> The open(filename, mode) command will allow you to open a file. In this case, since you want to append to the file, the mode should be <tt>'a'</tt>.  For example, <pre>f &#61; open(&#39;flash.txt&#39;, &#39;a&#39;)</pre>
+</li> <li> After the file is open, you can use the command <tt>f.write(TEXT)</tt> to write the question, separating string, and answer to your database file. If you don't want everything on one line, then you will need to include <tt>'\n'</tt>, the newline character.
 </li> <li> Ideally, you would use a redirect to return to the upload page, however, Python's CGI does not support redirects. We worked past this by using the python script to create a simple page, which included an "Upload Another?" button that returned the user to the upload page, and a "Test Me" button that opened flashcards.html, our page that used flashcards.js to test the user. 
 </li></ul> 
 <p />
