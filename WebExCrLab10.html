@@ -68,7 +68,7 @@ The starter files are <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFile
 <p />
 <h4><a name="An_Intro_to_HTML5_Canvas"></a> An Intro to HTML5 Canvas </h4>
 <p />
-Why get excited about HTML5 Canvas? Several super cool web apps use Canvas because it is great for games and animation- the most notable examples include iPhone app <a href="http://10k.aneventapart.com/Uploads/83/#" target="_top">Sinuous</a>, <a href="http://www.effectgames.com/demos/canvascycle/" target="_top">images which use 8-bit color-cycling a'la retro gaming</a>, <a href="http://bomomo.com/" target="_top">Bomomo</a>, <a href="http://10k.aneventapart.com/Uploads/343/" target="_top">Litesaber Training</a>,<a href="http://spielzeugz.de/html5/liquid-chars.html" target="_top">and the strangely hypnotic liquid characters</a>.
+Why get excited about HTML5 Canvas? Several super cool web apps use Canvas because it is great for games and animation- the most notable examples include iPhone app <a href="http://10k.aneventapart.com/Uploads/83/#" target="_top">Sinuous</a>, <a href="http://www.effectgames.com/demos/canvascycle/" target="_top">images which use 8-bit color-cycling a'la retro gaming</a>, <a href="http://bomomo.com/" target="_top">Bomomo</a>, <a href="http://10k.aneventapart.com/Uploads/343/" target="_top">Litesaber Training</a>,<a href="http://spielzeugz.de/html5/liquid-chars.html" target="_top"> and the strangely hypnotic liquid characters</a>.
 <p />
 The HTML5 Canvas is an element that you can insert into your HTML document. We would include our own tutorial here, but a good tutorial has already been done <a href="http://diveintohtml5.org/canvas.html" target="_top">here at diveintoHTML5</a>.
 <p />
@@ -82,42 +82,43 @@ We strongly suggest that you try out everything in the first half of the tutoria
 We only implemented the empty room: you should feel free to implement the other maps for even more extra credit!
 <p />
 <h4><a name="HTML_Details"></a> HTML Details </h4>
-You will be provided with picobot.html, which contains Picobot's basic functionality. You should spice up the CSS for the grutors, and if you decide to include teleport or other features, include the user interface for those. 
+You will be provided with <tt>picobot.html</tt>, which contains Picobot's basic functionality. Try spicing up the CSS, and if you decide to include teleport or other features, include the user interface for those. 
 <p />
-A useful resource for creating banners and other images is <a href="http://www.picnik.com" target="_top">Picnik</a>, on online image manipulation program.
+A useful resource for creating banners and other images is <a href="https://pixlr.com/editor/" target="_blank">Pixlr</a>, on online image manipulation program.
 <p />
 <h4><a name="Javascript_Details"></a> Javascript Details </h4>
 <p />
-You will start with picobot.js, which includes all of the basic functions (with some blanks!) that you will need for implementing the first level of Picobot. 
+You will start with <tt>picobot.js</tt>, which includes all of the basic functions (with some blanks!) that you will need for implementing the first level of Picobot. 
 <p /> <ul>
-<li> Write reset(), which should move the Picobot to a random location on the board, reset the state, set all squares on board to empty (except walls) and redraw the maze.
+<li> Write <tt>reset()</tt>, which should move the Picobot to a random location on the board, reset the state, set all squares on board to empty (except walls) and redraw the maze.
 </li></ul> 
 <p /> <ul>
-<li> Write drawMaze(), which will use the same techniques as the HTML5 tutorial above. It will be very useful to loop over all of the columns and rows in the maze and deal with all possibilities accordingly. Here is also where we called countEmpty(), which counted all of the empty (unvisited) cells.
+<li> Write <tt>drawMaze()</tt>, which will use the same techniques as the HTML5 tutorial above. It will be very useful to loop over all of the columns and rows in the maze and deal with all possibilities accordingly. Here is also where we called <tt>countEmpty()</tt>, which counted all of the empty (unvisited) cells.
 </li></ul> 
 <p /> <ul>
-<li> Write pause() and resume(), for these you will need clearInterval and setInterval(move, time) These should each be one line functions.
+<li> Write <tt>pause()</tt> and <tt>resume()</tt>. For these, you will need <tt>clearInterval</tt> and <tt>setInterval(move, time)</tt>. These should each be one line functions.
 </li></ul> 
 <p /> <ul>
-<li> Write loadrules(), which should take input from the <span class="twikiNewLink">PicoRules<a rel="nofollow" title="Create this topic" href="/twiki/bin/edit/CS5/PicoRules?topicparent=CS5.WebExCr2011Lab10"><sup>?</sup></a></span> text box and parse it. You should ignore comments that begin with #, and sort the starting state, surroundings, direction, and ending state into the rulesArray. Once all the rules are separated, it may be helpful to split rules on the space character.
+<li> Write <tt>loadrules()</tt>, which should take input from the <span class="twikiNewLink">PicoRules<a rel="nofollow" title="Create this topic" href="/twiki/bin/edit/CS5/PicoRules?topicparent=CS5.WebExCr2011Lab10"><sup>?</sup></a></span> text box and parse it. You should ignore comments that begin with <tt>#</tt>, and sort the starting state, surroundings, direction, and ending state into the <tt>rulesArray</tt>. Once all the rules are separated, it may be helpful to split rules on the space character.
 </li></ul> 
 <p /> <ul>
-<li> Write getSurroundings(r,c), which takes in the row and column number of any square on your board and returns the environment in Picobot surroundings form, eg, Nxxx.
+<li> Write <tt>getSurroundings(r,c)</tt>, which takes in the row and column number of any square on your board and returns the environment in Picobot surroundings form, eg, Nxxx.
 </li></ul> 
 <p /> <ul>
-<li> Write getDirect(), which should call getSurroundings(), then check the current surroundings against your rules array (and current state) to determine the correct direction  for the Picobot to travel (and perhaps state change as well).
+<li> Write <tt> getDirect()</tt>, which should call <tt>getSurroundings()</tt>, then check the current surroundings against your rules array (and current state) to determine the correct direction for the Picobot to travel (and perhaps state change as well).
 </li></ul> 
 <p /> <ul>
-<li> Write move(), which should get the Picobot's direction from getDirect(), update the location of Picobot (depending on the direction), set that cell in the maze to 'Picobot', and set the cell where Picobot was previously as visited.
+<li> Write <tt>move()</tt>, which should get the Picobot's direction from <tt>getDirect()</tt>, update the location of Picobot (depending on the direction), set that cell in the maze to 'Picobot', and set the cell where Picobot was previously as visited.
 </li></ul> 
 <p /> <ul>
-<li> Write countEmpty(), which loops through all of the cells in the maze and keeps a running tally of the empty ones. Needless to say, if there are no empty cells, then you have won the game!
+<li> Write <tt>countEmpty()</tt>, which loops through all of the cells in the maze and keeps a running tally of the empty ones. Needless to say, if there are no empty cells, then you have won the game!
 </li></ul> 
 <p /> <ul>
-<li> Bonus! Write teleport(direction), which looks up the current bot location, resets the maze (so picobot's path won't carry through), then moves the Picobot. If you implement teleport, then you should also add buttons on your html page that call this function.
+<li> Bonus! Write <tt>teleport(direction)</tt>, which looks up the current bot location, resets the maze (so picobot's path won't carry through), then moves the Picobot. If you implement teleport, then you should also add buttons on your html page that call this function.
 </li></ul> 
 <p />
-Of course, there are also many other features that you can implement! Run Pico-wild!<a name="bottom"></a>
+Of course, there are also many other features that you can implement! Run Pico-wild!
+<a name="bottom"></a>
 </div>
 <p />
 <div class="footer">
