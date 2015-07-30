@@ -57,7 +57,7 @@
 <div class="main">
 <a name="text"></a><h3><a name="Extra_Credit_Lab_6_AJAX_and_The"></a><a name="Extra_Credit_Lab_6_AJAX_and_The_"></a> Extra Credit Lab 6: AJAX and The Caesar Cipher Part II </h3>
 <p />
-For this problem you will extend the caesar enciphering page that you wrote last week. However, instead of a Javascript function, we will go back to the python version. You should have already written a python function to decipher a message encrypted using a caesar cipher in your homework. You will need to integrate the enciphering and deciphering capabilities into a single front end web application.
+For this problem you will extend the caesar enciphering page that you wrote in lab 4. However, instead of a Javascript function, we will go back to the python version. You should have already written a python function to decipher a message encrypted using a caesar cipher in your homework. You will need to integrate the enciphering and deciphering capabilities into a single front end web application.
 <p />
 <hr />
 <strong>To Do:</strong> Implement a web application that uses <ul>
@@ -180,42 +180,60 @@ The last python function you will need to write will take three inputs: the acti
 <h5><a name="Web_Details"></a> Web Details </h5>
 <p />
 <b>HTML Details</b><br />
-The HTML for this page can be fairly simple. Remember to set the onSubmit attributes on your submit buttons to call appropriate javascript functions.
+The HTML for this page can be fairly simple. Remember to set the <tt>onsubmit</tt> attributes on your submit buttons to call appropriate javascript functions.
 <p />
 <b>Javascript Details</b><br />
 Your javascript will help make your page interactive (especially when the user mouses over an image) and will also handle making the AJAX calls to your python script. The assignment will be much easier if you split your javascript code into functions with very specific purposes.  Remember that you will have to send different information depending on which radio is selected and which button is clicked.
 <p />
    <b>AJAX Details</b><br />
+AJAX (short for Asynchronous JavaScript and XML) is a way to update part of a webpage without having to reload the whole page. If you want to read more about AJAX, this is a good reference: <a href="http://www.w3schools.com/ajax/">http://www.w3schools.com/ajax/</a>
+<p />
 The code to send an AJAX request is as follows:
 <p /> <ul>
-<li> First you must create an xmlhttp request object which will actually do the communicating between javascript and python. This should not be in any function and should only happen once. The    onreadystatechange function dictates what should happen when the xmlhttp object returns a value. When the object enters a ready state indicating that the request has finished and returned correctly, the   below function will replace the innerHTML of an element named 'myDiv' with whatever the output of the python script was.
-</li></ul> 
+<li> First you must create an <tt>XMLHttpRequest</tt> object which will actually do the communicating between the webpage in the browser and your cgi server. This should not be in any function and should only happen once. The <tt>onreadystatechange</tt> function dictates what should happen when the <tt>xmlhttp</tt> object returns a value. When the object enters a ready state indicating that the request has finished and returned correctly, the below function will replace the innerHTML of an element with the id <tt>myDiv</tt> with whatever the response text of the request was.
 <pre>
-   xmlhttp&#61;new XMLHttpRequest();
-   xmlhttp.onreadystatechange&#61;function()
-   {
-   if (xmlhttp.readyState&#61;&#61;4 &#38;&#38; xmlhttp.status&#61;&#61;200)
-   {
-      document.getElementById(&#39;myDiv&#39;).innerHTML&#61;xmlhttp.responseText;
-   }
-   }
-</pre> <ul>
-<li> Sending a request is a two step process: the request must first be opened, and then sent. This code will send a GET request to the script encipher.py and will set the form field S to be 'spam' and n to be 1. The    true indicates that the request should be asynchronous so that javascript doesn't have to wait for this request to continue (although it should not be doing anything else anyway).
+xmlhttp &#61; new XMLHttpRequest();
+xmlhttp.onreadystatechange &#61; function()
+{
+  if (xmlhttp.readyState&#61;&#61;4 &#38;&#38; xmlhttp.status&#61;&#61;200)
+  {
+    document.getElementById(&#39;myDiv&#39;).innerHTML&#61;xmlhttp.responseText;
+  }
+}
+</pre> 
 </li></ul> 
+<ul>
+<li> Sending a request is a two step process: the request must first be opened, and then sent. This code will send a <tt>GET</tt> request to the script <tt>encipher.py</tt> and will set the form field <tt>S</tt> to be <tt>'spam'</tt> and <tt>n</tt> to be <tt>1</tt>. The <tt>true</tt> keyword indicates that the request should be asynchronous so that javascript doesn't have to wait for this request to finish completely before doing other tasks on the page (although it should not be doing anything else anyway).
 <pre>
-      xmlhttp.open(&#34;GET&#34;,&#34;encipher.py?action&#61;&#39;encipher&#39;&#38;S&#61;&#39;spam&#39;&#38;n&#61;1&#34;,true);
-      xmlhttp.send();
+xmlhttp.open(&#34;GET&#34;,&#34;encipher.py?action&#61;&#39;encipher&#39;&#38;S&#61;&#39;spam&#39;&#38;n&#61;1&#34;,true);
+xmlhttp.send();
 </pre>
+</li></ul> 
 <p />
 <p />
-You will need to get information from the AJAX request to determine which option was clicked. The syntax for this is identical to the syntax for a regular CGI call. The below code will grab the 'cipher' field and store whatever the choice was in a variable named 'action'.
+You will need to get information from the AJAX request to determine which option was clicked. The syntax for this is identical to the syntax for a regular CGI call. The below code will grab the <tt>cipher</tt> field and store whatever the choice was in a variable named <tt>action</tt>.
 <pre>
    form &#61; cgi.FieldStorage()   # FieldStorage object to hold the form data
    action &#61; form.getvalue(&#39;cipher&#39;)
 </pre>
-You will want get the string and number of characters to shift by in the same way.  If you are deciphering you should set n=0.  You will then want to pass these to your <tt>encipher.py</tt> script which will run the <tt>cipher</tt> function.
+You will want get the string and number of characters to shift by in the same way.  If you are deciphering you should use <tt>n = 0</tt>.  You will then want to pass these to your <tt>encipher.py</tt> script which will run the <tt>cipher</tt> function.
 <p />
 <p />
+<h3><a name="Submission"></a>Submission</h3>
+
+For this assignment, you should submit all of your source files:
+<ul>
+<li> Your html front page </li>
+<li> Your CSS stylesheet </li>
+<li> Your python file for enciphering and deciphering</li>
+</ul> 
+
+Also submit two screenshots: 
+<ul>
+<li> <tt>lab6img1.png</tt>: a screenshot of your front <tt>html</tt> page where users enter messages.</li> 
+<li> <tt>lab6img2.png</tt>: a screenshot of the result page after running the decipher option.</li>
+</ul> 
+
 <p />
 -- <a href="/twiki/bin/view/Main/BridgetteEichelberger" class="twikiLink">BridgetteEichelberger</a> - 07 Jun 2011<a name="bottom"></a>
 </div>
