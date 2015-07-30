@@ -85,14 +85,16 @@ Here is the HTML for the front page; it will look identical to the example. The 
 &#60;/head&#62;
 &#60;body&#62;
 &#60;h2&#62;Please upload a file for analysis:&#60;/h2&#62;
-&#60;form enctype&#61;&#34;multipart/form-data&#34; action&#61;&#34;upload.py&#34; method&#61;&#34;post&#34;&#62;
+&#60;form enctype&#61;&#34;multipart/form-data&#34; action&#61;&#34;cgi-bin/upload.py&#34; method&#61;&#34;post&#34;&#62;
 &#60;p&#62;File: &#60;input type&#61;&#34;file&#34; name&#61;&#34;file&#34;&#62;&#60;/p&#62;
 &#60;p&#62;&#60;input type&#61;&#34;submit&#34; value&#61;&#34;Upload&#34;&#62;&#60;/p&#62;
 &#60;/form&#62;
 &#60;/body&#62;
 &#60;/html&#62;
 </pre>
-Note that the python script that this code calls in the the <tt>action</tt> attribute of the <tt>form</tt> is named <tt>upload.py</tt>.This is the easiest way to use CGI.
+The <tt>enctype</tt> attribute of the form might be new to you; this is crucial for the page's upload functionality.
+<p />
+Note that the python script that this code calls in the the <tt>action</tt> attribute of the <tt>form</tt> is named <tt>upload.py</tt>. This front page should be placed into your <tt>web</tt> folder and the <tt>upload.py</tt> script should be in the <tt>cgi-bin</tt> folder. This is the easiest way to use CGI.
 <p />
 As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
 <p />
@@ -142,13 +144,15 @@ fileitem &#61; form&#91;&#39;file&#39;]
 
 if fileitem.filename:
    
-   fn &#61; os.path.basename(fileitem.filename)
-   open(&#39;files/&#39; + fn, &#39;wb&#39;).write(fileitem.file.read())
+  fn &#61; os.path.basename(fileitem.filename)
+  open(&#39;files/&#39; + fn, &#39;wb&#39;).write(fileitem.file.read())
    
+  # Add code here to analyze the file
+
 else:
-   sys.exit(0)
+  sys.exit(0)
 </pre>
-This will save the uploaded file into a new directory named <code>files</code>, which is located in the same directory as your <code>upload.py</code> file. The <code>files</code> directory <strong>must</strong> already exist otherwise this script will not work. Alternatively, you could just not put the uploaded files into a subdirectory if you would like by changing the <code>open</code> line to <code>open(fn, 'wb').write(fileitem.file.read())</code>.
+This will save the uploaded file into a new directory named <code>files</code>, which is located in the same directory as your front HTML page. (Normally this directory would be in the same place as your <code>upload.py</code> file, but since we are running it with a cgi-server, it will look relative to the HTML page.) The <code>files</code> directory <strong>must</strong> already exist otherwise this script will not work. Alternatively, you could just not put the uploaded files into a subdirectory if you would like by changing the <code>open</code> line to: <pre>open(fn, 'wb').write(fileitem.file.read())</pre>
 <p />
 <p />
 
