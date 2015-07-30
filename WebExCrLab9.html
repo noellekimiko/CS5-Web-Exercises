@@ -71,22 +71,22 @@ We added  the comment text box, as well as a button for toggling the submitted c
 <p />
 <h3><a name="A_Short_Introduction_to_SQLite3"></a> A Short Introduction to SQLite3 </h3>
 <p />
-SQLite is Python's built-in database: it allows you to store information in a table. Create a file in your cgi-bin named sql.py. Copy and paste the following code into the top of your file:
+SQLite is Python's built-in database: it allows you to store information in a table. Create a file in your <tt>cgi-bin</tt> named <tt>sql.py</tt>. Copy and paste the following code into the top of your file:
 <p />
 <pre>
 #!/usr/local/bin/python
 import sqlite3
 </pre> 
 <p />
-The first line of code is Python's location (we went over this in Lab 7/8), and the second line imports SQLite3, which is built in to Python.
+The first line of code is Python's location, and the second line imports SQLite3, which is built in to Python.
 <p />
 You also need to establish a connection to a SQL database.
 <pre>
-conn&#61;sqlite3.connect(&#39;sqldatabase.sql&#39;)
+conn &#61; sqlite3.connect(&#39;sqldatabase.sql&#39;)
 c &#61; conn.cursor()
 </pre>
 <p />
-This code will create a file named 'sqldatabase.sql'. The second line create a cursor object, which is the main way that you will interact with your new database. You can think of your cursor in the same way as your mouse cursor: you can select table rows, and add or delete rows.
+This code will create a file named <tt>sqldatabase.sql</tt>. The second line create a cursor object, which is the main way that you will interact with your new database. You can think of your cursor in the same way as your mouse cursor: you can select table rows, and add or delete rows.
 <p />
 <h5><a name="Creating_A_Table"></a> Creating A Table </h5>
 <p />
@@ -96,19 +96,19 @@ After your connection and cursor are established, you can create a table using S
 c.execute(&#34;create table people(name text, age text, occupation text);&#34;) 
 </pre>
 <p />
-For every SQLite function you call, you must include <tt>c.execute</tt>. The table we created is named people, and it has three columns: person, age, and occupation. The <tt>text</tt> simply signifies that each parameter will be letters. For this assignment, we will only use text, so you don't have to worry about the other types (integer, real).
+For every SQLite function you call, you must include <tt>c.execute</tt>. The table we created is named people, and it has three columns: <tt>name</tt>, <tt>age</tt>, and <tt>occupation</tt>. The <tt>text</tt> keyword simply signifies that each parameter will be treated as words. For this assignment, we will only use <tt>text</tt>, so you don't have to worry about the other types (such as <tt>integer</tt> and <tt>real</tt>).
 <p />
 <p />
 <h5><a name="Inserting_A_Row"></a> Inserting A Row </h5>
 An empty table is boring. You can insert rows by executing the insert command:
 <p />
 <pre>
-person&#61;(&#39;Albus Dumbledore&#39;, &#39;116&#39;, &#39;Wizard&#39;)
+person &#61; (&#39;Albus Dumbledore&#39;, &#39;116&#39;, &#39;Wizard&#39;)
 
 c.execute(&#34;insert into people values(?,?,?)&#34;, person )
 </pre>
 <p />
-The first thing to notice here is the list of question marks in the insert command. They tell SQLite that a value is included in person, the second argument. <tt>person</tt> is defined above, and it must be a tuple (list).
+The first thing to notice here is the list of question marks in the insert command. They tell SQLite that a value is included in the second argument <tt>person</tt>. The <tt>person</tt> variable is defined above, and it must be a tuple (a list of comma-separated values inside of parentheses).
 <p />
 <h5><a name="Saving_Changes"></a><a name="Saving_Changes_"></a> Saving Changes! </h5>
 <p />
@@ -125,9 +125,9 @@ c.execute(&#34;select &#42; from people&#34;)
 </pre>
 <p />
 <h5><a name="Your_Table_The_Command_Line"></a> Your Table -&gt; The Command Line </h5>
-   In order for your script to output the rows in the table you need to bind the command above to a variable, like x. Then, using a for loop, iterate over all of the rows in x, printing each row.
+   In order for your script to output the rows in the table you need to bind the <tt>execute</tt> command above to a variable, like <tt>x</tt>. Then, using a <tt>for</tt> loop, iterate over all of the rows in <tt>x</tt>, printing each row.
 <p />
-Now you can run your Python script through the command prompt / terminal. Open up your command line, and navigate to your web folder. If web is on your Desktop, then you will type <tt>cd Desktop/web</tt>. Then, type
+Now you can run your Python script through the command prompt/terminal. Open up your command line, and navigate to your <tt>web</tt> folder. If <tt>web</tt> is on your <tt>Desktop</tt>, then you will type <tt>cd Desktop/web</tt>. Then, type
 <pre>
 python cgi-bin/sql.py
 </pre>
@@ -136,17 +136,17 @@ You should see
 <pre>
 (u&#39;Albus Dumbledore&#39;, u&#39;116&#39;, u&#39;Wizard&#39; )
 </pre>
-Small note: The u before the strings is merely Python's way of signifying unicode characters. You don't have to worry about it.
+Small note: The <tt>u</tt> before the strings is merely Python's way of signifying unicode characters. You don't have to worry about it.
 <p />
 Now you will need to comment out the create table line, otherwise when you run your script again, it will create another table over the one you just saved.
-You may want to add more people to your table- just change the <tt>person = </tt> line to whatever details you want and run sql.py again.
+You may want to add more people to your table; to do so, just change the <tt>person = </tt> line to include whatever details you want and run <tt>sql.py</tt> again.
 <p />
 <p />
 If you only want to select the names of your people, you could say
 <pre>
 c.execute(&#34;select name from people&#34;)
 </pre>
-Try inserting the following code where your <tt>select *</tt> function was earlier. Now you should see only the names of the people in your table,
+Try inserting this code where your <tt>select *</tt> function was earlier. Now you should see only the names of the people in your table
 <pre>
 (u&#39;Adolf Hitler&#39;,) (u&#39;Albus Dumbledore,) (u&#39;Dora the Explorer&#39;,) (u&#39;Chuck Norris&#39;,)
 </pre>
@@ -167,7 +167,7 @@ A list of commonly used SQL commands is available at <a href="http://www.w3schoo
 <pre>
 c.execute(&#34;drop table people;&#34;)
 </pre>
-   Needless to say, you are waging utter unsalvageable destruction like the fiery hand of God on your table and cannot ever restore it again. If you do delete your table, you will need to uncomment your create table command to access SQLite again.
+   Needless to say, you are waging utter unsalvageable destruction on your table and cannot ever restore it again. If you do delete your table, you will need to uncomment your create table command to access SQLite again.
 <p />
 <p />
 <p />
@@ -179,32 +179,32 @@ For your flashcards 9, you will need to modify sql.py in several ways. As always
 import cgi
 import cgitb; cgitb.enable()</pre>
 <p />
-Like the previous incarnations of flashcards, we will want to collect data from cgi.FieldStorage(). In this case, you will want to get values for name, comment, and picNum. 
+Like the previous incarnations of flashcards, we will want to collect data from <tt>cgi.FieldStorage()</tt>. In this case, you will want to get values for <tt>name</tt>, <tt>comment</tt>, and <tt>picNum</tt>. 
 Then, you will need to put all of these into your table for comments. If you decide to display the time that a comment was posted, then you can grab the submit time using
 <pre>
 submitTime&#61;time.asctime(time.localtime(time.time()))
-</pre> as long as you have imported time in your header, and place time in your table as well.
+</pre> as long as you have imported <tt>time</tt> in your header, and make a column for <tt>time</tt> in your table as well.
 <p />
 <h5><a name="comment_py"></a> comment.py </h5>
-   The comment.py file receives the picture number from the javascript in flashcards9.html file. Your goal is to modify comment.py so that it pulls all of the comments that pertain to that picture out of your SQL database.
+   The <tt>comment.py</tt> file receives the picture number from the javascript in <tt>flashcards9.html</tt> file. Your goal is to modify <tt>comment.py</tt> so that it pulls all of the comments on that picture out of your SQL database.
 <p />
-   First, you will need to insert code that connects to your sql database file and creates your cursor, very similar to the code included sql.py.
+   First, you will need to insert code that connects to your sql database file and creates your cursor, very similar to the code included <tt>sql.py</tt>.
 <p />
-   Then, you cursor needs to pull out all comments that match the number taken from the cgi.FieldStorage().
+   Then, you cursor needs to pull out all comments that match the number taken from the <tt>cgi.FieldStorage()</tt>.
 <p />
-   In the for loop, you need to add code that retrieves the name, time, and comment, as well as have if statements to catch if the name or comment fields are blank.
+   In the <tt>for</tt> loop, you need to add code that retrieves the <tt>name</tt>, <tt>comment</tt>, and <tt>time</tt> for that picture. There should also be <tt>if</tt> statements for the cases where the <tt>name</tt> or <tt>comment</tt> fields are blank.
 <p />
 <h5><a name="flashcards9_html"></a> flashcards9.html </h5>
 <p />
-   You will have to create two functions, nextCard and prevCard, that cycle through your photos in order. When you get to the last photo, nextCard should wrap around and return the first photo. Similarly, if you are on the first photo, prevCard should return the last photo. 
-These functions will be very similar to firstCard(). Hint: For nextCard(), we used a mod %.   
+   You will have to create two functions, <tt>nextCard</tt> and <tt>prevCard</tt>, that cycle through your photos in order. When you get to the last photo, <tt>nextCard</tt> should wrap around and return the first photo. Similarly, if you are on the first photo, <tt>prevCard</tt> should return the last photo. 
+These functions will be very similar to <tt>firstCard()</tt>. Hint: For <tt>nextCard()</tt>, we used a mod operator (<tt>%</tt>).   
 <p />
-   If you want, you can also edit the CSS styling for your comments- the most conventional form is to put them in boxes, but feel free to think out of the box.
+   If you want, you can also use CSS to style your comments. The most conventional form is to put them in boxes, but feel free to think out of the box.
 <p />
 <h5><a name="index9_html"></a> index9.html </h5>
-   If you are editing the index for Lab 8, the only thing you will need to change is the button link.
+   If you are working with the <tt>index.html</tt> file from Lab 8, the only thing you will need to change is the button link.
 <p />
-Now you're done!! Yay!! Don't forget to submit your work.
+Now you're done! Don't forget to submit your work.
 <p />
 -- <a href="/twiki/bin/view/Main/BridgetteEichelberger" class="twikiLink">BridgetteEichelberger</a> - 17 Jun 2011	<a name="bottom"></a>
 </div>
