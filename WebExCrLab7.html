@@ -66,7 +66,7 @@ In this week's assignment you will be making on online text flashcard service.
 </li> <li> AJAX
 </li> <li> Javascript
 </li></ul> 
-and allows an end user to upload questions with corresponding answers, and then to cycle randomly through flashcards and see the answers.
+and allows an end user to upload questions with corresponding answers, and then to cycle randomly through flashcards and see the answers. 
 <hr />
 Starter Files: <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/Lab_7_Starter_Files/flashcards.js" target="_top">flashcards.js</a> <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/Lab_7_Starter_Files/flashcards.html" target="_top">flashcards.html</a>
 <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/Lab_7_Starter_Files/database.txt" target="_top">database.txt</a>
@@ -84,7 +84,9 @@ Starter Files: <a href="http://www.cs.hmc.edu/~cs5grad/cs5/webStarterFiles/Lab_7
 </center>
 <p />
 <h4><a name="Web_Details"></a> Web Details </h4>
-In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. You will use CGI to allow your front page to call the python script you have written. The upload page and the viewing page should be two completely separate files. Your upload page can be a simple cgi form while the viewing page will need to use javascript to cycle through the flashcards. You should have your upload page save the uploaded image and also append the filename and corresponding answer to a text file which your second page can read from. For example, your text file could look like: <br />
+In this assignment we would like you to use HTML + CSS to construct the pages and make them look presentable. The provided starter files have a working version of the display part for the flashcard system: <tt>flashcards.html</tt> is the viewing page for the flashcards which uses <tt>database.txt</tt> for its information and <tt>flashcards.js</tt> for its behavior. We would like you to add a second html page where the user can enter their own questions and answers.
+<p />
+Your page should have a form where the user enters a question and a corresponding answer. Then, the page should call a python script to save the question and the corresponding answer by appending this information to the existing <tt>database.txt</tt> file. The second page (<tt>flashcards.html</tt>) can then read from this database. For example, your text file could look like: <br />
 <center>
 <img alt="cardfile.png" src="http://www.cs.hmc.edu/~beichelberge/summer11/cardfile.png" /> 
 <br>
@@ -92,71 +94,106 @@ In this assignment we would like you to use HTML + CSS to construct the pages an
 </center><br />
 As always, make sure that your files have appropriate permissions to let the webserver call them. Scripts must be executable, html files and images must be readable.
 <p />
-<h5><a name="HTML_Details"></a> HTML Details </h5> <ul>
-<li> For the viewing page, you should decide on what you would like the look and behavior of your web application to be. Look through the <code>flashcards.js</code> file to see what the given functions will do, and then you can have interactions with different page elements call appropriate functions.
-</li></ul> 
-<p /> <ul>
-<li> Another thing you will need is a means to send the input information from the index html document (first image, above) to your python script. You can do this with the form tag, as follows       <pre>&#60;form enctype&#61;&#34;multipart/form-data&#34; action&#61;&#34;cgi-bin/YOURPYTHONSCRIPT.py&#34; method&#61;&#34;post&#34;&#62;</pre>           You should save all of your .html files in the web directory, since the Python CGI server automatically tries to run all files in cgi-bin as scripts (whether they are or not). This is why you need to run the server from your web directory and specify cgi-bin/YOURPYTHONSCRIPT.py.
-</li></ul> 
-<p /> <ul>
-<li> One thing to consider is the <code>onload</code> attribute that you can add to the <tt>body</tt> element. This allows you to call a javascript function (perhaps to load a card using <tt>initialize()</tt> ) as soon as the HTML of the page is loaded.
-</li></ul> 
-<p />
-<p />
-<h5><a name="Javascript_Details"></a> Javascript Details </h5>
-You will use javascript to display and change the flashcards. The provided <code>flashcards.js</code>  file will give all of the needed functionality.  You will need to include the following line in the head of your html document.
-<pre>&#60;script src&#61;&#34;flashcards.js&#34; type&#61;&#34;text/javascript&#34;&#62; &#60;/script&#62;</pre>
-<p />
-All you will need to do in the javascript of the second page is to use AJAX to open up the file where you have written filenames and corresponding answers and parse it into an array of filenames named <code>questions</code> and a correspondingly ordered array of answers named <code>answers</code>. <code>flashcards.js</code> will provide all of the functions you will need, but you will have to decide how and when to call them.
-<p /> <ul>
-<li> Once you have the text of the answers file, the javascript <code>String.split()</code> function may be very useful for you. It can split a string on any character, including newline <code>'\n'</code>, space <code>' '</code>, period <code>'.'</code>, etc... It may be helpful to put a unique character string into your file to help you split the questions and answers. As shown in our third image, we used the string '#$%'.
-</li></ul> 
-<p />
-<h5><a name="AJAX_Details"></a> AJAX Details </h5> <ul>
-<li> Remember that to use AJAX you need to first create an <span class="twikiNewLink">XMLHttpRequest<a rel="nofollow" href="/twiki/bin/edit/CS5/XMLHttpRequest?topicparent=CS5.WebExCr2011Lab7" title="Create this topic"><sup>?</sup></a></span> object, then open a request, and then send it.
-</li> <li> In this case, you will <strong>not</strong> want the request to be asynchronous. If it were, the rest of the javascript would attempt to run before your request had returned, causing problems. Thus, your request could look something like:
-</li></ul> 
-<pre>
-   xmlhttp&#61;new XMLHttpRequest(); 
-   xmlhttp.open(&#34;GET&#34;, &#34;flash.txt&#34;, false);
-   xmlhttp.send();
-   var file &#61; xmlhttp.responseText;
-</pre>
-   This will create and send the request and then save the text of the file as a string in the variable <code>file</code>. This code is included in the function initialize().
-<p />
 <h5><a name="Python_Details"></a> Python Details </h5> <ul>
 <li> <strong>Don't forget</strong> to have at the <em>very</em> top of your python file either <ul>
 <li> <code>#!C:/Python26/python.exe</code> if you are using a Windows machine, or
 </li> <li> <code>#!/usr/local/bin/python</code> if you are using a Mac. (Remember that the server to which you will submit everything is on a Mac!) <br /><br />
 </li></ul> 
 </li> <li> Also remember to include
-</li></ul> 
 <pre>
-   import cgi
-   import cgitb; cgitb.enable()
+import cgi
+import cgitb; cgitb.enable()
 </pre>
-   near the top of your python file. <ul>
-<li> You will have to create a cgi <span class="twikiNewLink">FieldStorage<a title="Create this topic" rel="nofollow" href="/twiki/bin/edit/CS5/FieldStorage?topicparent=CS5.WebExCr2011Lab7"><sup>?</sup></a></span> object to grab the data from the form:
-</li></ul> 
+near the top of your python file. 
+</li></ul> <ul>
+<li> You will have to create a cgi FieldStorage object to grab the data from the form:
 <pre>
-   form &#61; cgi.FieldStorage()
+form &#61; cgi.FieldStorage()
 </pre>
+</li></ul> 
 <p /> <ul>
 <li> Notice that you will still need to grab the answer field of the form and then you will need to append everything to your file. You can grab the input of text boxes in your html document using <tt>form.getvalue( <b>inputName</b> )</tt>.
-</li> <li> The open(filename, mode) command will allow you to open a file. In this case, since you want to append to the file, the mode should be <tt>'a'</tt>.  For example, <pre>f &#61; open(&#39;flash.txt&#39;, &#39;a&#39;)</pre>
+</li> <li> The <tt>open(filename, mode)</tt> command will allow you to open a file. In this case, since you want to append to the file, the mode should be <tt>'a'</tt>.  For example, 
+<pre>
+f &#61; open(&#39;database.txt&#39;, &#39;a&#39;)
+</pre>
+You could also start with a blank text document if you don't want to include the existing information, but you should create this before running your webpage. This text document should be in your <tt>web</tt> directory.
 </li> <li> After the file is open, you can use the command <tt>f.write(TEXT)</tt> to write the question, separating string, and answer to your database file. If you don't want everything on one line, then you will need to include <tt>'\n'</tt>, the newline character.
-</li> <li> Ideally, you would use a redirect to return to the upload page, however, Python's CGI does not support redirects. We worked past this by using the python script to create a simple page, which included an "Upload Another?" button that returned the user to the upload page, and a "Test Me" button that opened flashcards.html, our page that used flashcards.js to test the user. 
+</li> <li> Ideally, you would use a redirect to return to the upload page, however, Python's CGI does not support redirects. We worked past this by using the python script to create a simple page, which included an "Upload Another?" button that returned the user to the upload page, and a "Test Me" button that opened <tt>flashcards.html</tt>, our page that used <tt>flashcards.js</tt> to test the user. 
 </li></ul> 
 <p />
-<h4><a name="Testing_Page"></a> Testing Page </h4>
+<h5><a name="HTML_Details"></a> HTML Details </h5> <ul>
+<li> For the viewing page, you shouldn't have to make any changes to <tt>flashcards.html</tt>, but you should read through it and try to understand it. In particular, note how page elements call javascript functions. For example, the <code>onload</code> attribute of the <tt>body</tt> element calls a javascript function <tt>initialize()</tt> which will run as soon as the HTML of the page is loaded.
+</li> </ul>
+<ul>
+<li>
+Also, note that since this page uses <tt>flashcards.js</tt>, we have inclued the reference in the header:
+<pre>&#60;script src&#61;&#34;flashcards.js&#34; type&#61;&#34;text/javascript&#34;&#62; &#60;/script&#62;</pre>
+</li> </ul>
+<p /> <ul>
+<li> Another thing you will need is a means to send the input information from the upload page to your python script. You can do this with the form tag, as follows       <pre>&#60;form enctype&#61;&#34;multipart/form-data&#34; action&#61;&#34;cgi-bin/YOURPYTHONSCRIPT.py&#34; method&#61;&#34;post&#34;&#62;</pre>           You should save all of your html files in the <tt>web</tt> directory, since the Python CGI server automatically tries to run all files in <tt>cgi-bin</tt> as scripts (whether they are or not). This is why you need to run the server from your <tt>web</tt> directory and specify <tt>cgi-bin/YOURPYTHONSCRIPT.py</tt>.
+</li></ul> 
+<p /> 
+<p />
+<p />
+<!-- <h5><a name="Javascript_Details"></a> Javascript Details </h5>
+You will use javascript to display and change the flashcards. The provided <code>flashcards.js</code>  file will give all of the needed functionality.  You will need to include the following line in the head of your html document.
+<pre>&#60;script src&#61;&#34;flashcards.js&#34; type&#61;&#34;text/javascript&#34;&#62; &#60;/script&#62;</pre>
+<p />
+All you will need to do in the javascript of the second page is to use AJAX to open up the file where you have written filenames and corresponding answers and parse it into an array of filenames named <code>questions</code> and a correspondingly ordered array of answers named <code>answers</code>. <code>flashcards.js</code> will provide all of the functions you will need, but you will have to decide how and when to call them.
+<p /> <ul>
+<li> Once you have the text of the answers file, the javascript <code>String.split()</code> function may be very useful for you. It can split a string on any character, including newline <code>'\n'</code>, space <code>' '</code>, period <code>'.'</code>, etc... It may be helpful to put a unique character string into your file to help you split the questions and answers. As shown in our third image, we used the string <tt>'#$%'</tt>.
+</li></ul>  -->
+
+<h5><a name="Javascript_Details"></a> Javascript Details </h5>
+The provided <tt>flashcards.html</tt> file uses javascript from <tt>flashcards.js</tt> to display and change the flashcards. Read over this file to make sure you understand what it is doing.
+<p /> 
+In particular, note how the javascript <code>String.split()</code> function is used inside <tt>initialize()</tt>. This function can split a string on any character, including newline <code>'\n'</code>, space <code>' '</code>, period <code>'.'</code>, etc... The provided <tt>database.txt</tt> file uses the string <tt>'#$%'</tt> as a way to split the questions and answers. 
+<p />
+The javascript file should be in your <tt>web</tt> directory.
+
+<p />
+<h5><a name="AJAX_Details"></a> AJAX Details </h5> 
+Remember that to use AJAX you need to first create an <span class="twikiNewLink">XMLHttpRequest<a rel="nofollow" href="/twiki/bin/edit/CS5/XMLHttpRequest?topicparent=CS5.WebExCr2011Lab7" title="Create this topic"><sup>?</sup></a></span> object, then open a request, and then send it.
+<p />
+In this case, you will <strong>not</strong> want the request to be asynchronous. If it were, the rest of the javascript would attempt to run before your request had returned, causing problems. Thus, your request could look something like:
+
+<pre>
+xmlhttp&#61;new XMLHttpRequest(); 
+xmlhttp.open(&#34;GET&#34;, &#34;flash.txt&#34;, false);
+xmlhttp.send();
+var file &#61; xmlhttp.responseText;
+</pre>
+
+This will create and send the request and then save the text of the file as a string in the variable <code>file</code>. This code is included in the function <tt>initialize()</tt>.
+<p />
+
+<!-- <h4><a name="Testing_Page"></a> Testing Page </h4>
    Here are a few points that your test page should accomplish: <ul>
 <li> Display the question, with the answer initially hidden
-</li> <li> Have a "Show Answer" button
-</li> <li> as well as a button for "Next Card"
-</li> <li> In addition, a button for "Remove Card," which uses the <span class="twikiNewLink">RemoveQ<a title="Create this topic" href="/twiki/bin/edit/CS5/RemoveQ?topicparent=CS5.WebExCr2011Lab7" rel="nofollow"><sup>?</sup></a></span>() function in your flashcards.js file
-</li></ul> 
-<p />
-Feel free to add extra features and customize the look of your page!
+</li> <li> Have buttons for </li>
+<ul>
+<li> "Show Answer" </li> 
+<li> "Next Card"</li> 
+<li> "Remove Card," which uses the <tt>removeQ()</tt> function in your <tt>flashcards.js</tt> file
+</li>
+</ul>
+</ul>  -->
+
+<h3><a name="Submission"></a>Submission</h3>
+
+For this assignment, you should submit the files you added:
+<ul>
+<li> Your html front page </li>
+<li> Your python file for saving user questions and answers</li>
+</ul> 
+
+Also submit two screenshots: 
+<ul>
+<li> <tt>lab7img1.png</tt>: a screenshot of your front <tt>html</tt> page where users enter questions and answers.</li> 
+<li> <tt>lab6img2.png</tt>: a screenshot of the result page after inputting a new question and answer.</li>
+</ul> 
+
 <p />
 -- <a class="twikiLink" href="/twiki/bin/view/Main/BridgetteEichelberger">BridgetteEichelberger</a> - 07 Jun 2011<a name="bottom"></a>
 </div>
